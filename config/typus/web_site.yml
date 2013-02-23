@@ -1,0 +1,8 @@
+# Use the README file as a reference to customize settings.
+
+WebSite:
+  fields:
+    default: url, client_id, monitored
+    form: url, client_id, monitored
+  relationships: 
+  application: Application

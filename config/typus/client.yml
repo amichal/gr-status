@@ -1,0 +1,8 @@
+# Use the README file as a reference to customize settings.
+
+Client:
+  fields:
+    default: name, logo_url
+    form: name, logo_url
+  relationships: web_sites
+  application: Application

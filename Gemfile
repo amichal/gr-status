@@ -5,6 +5,8 @@ gem 'sqlite3'
 gem 'json'
 gem 'jquery-rails'
 gem 'haml-rails'
+gem 'kaminari'
+gem 'typus'
 
 group :assets do
   gem 'sass-rails'

@@ -1,5 +1,5 @@
 class Client < ActiveRecord::Base
-  attr_accessible :logo_url, :name
+  attr_accessible :logo_url, :name, :as=>:admin
 
   validates :name, :presence => true, :uniqueness=>true
 
