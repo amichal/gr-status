@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  url: MyString
+  client_id: 
+  monitored: false
+
+two:
+  url: MyString
+  client_id: 
+  monitored: false

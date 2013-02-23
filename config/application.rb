@@ -62,6 +62,18 @@ module GrStatus
     # Enable the asset pipeline
     config.assets.enabled = true
 
+    config.app_generators do |c|
+      c.template_engine :haml
+      c.helper = false
+      c.javascripts = false
+      c.stylesheets = false
+      c.test_framework :rspec, 
+        :fixture => true,
+        :fixture_replacement => nil
+      c.integration_tool :rspec
+      c.performance_tool :rspec
+    end
+
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
   end
