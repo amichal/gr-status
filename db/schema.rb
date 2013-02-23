@@ -14,7 +14,7 @@
 ActiveRecord::Schema.define(:version => 20130223185924) do
 
   create_table "clients", :force => true do |t|
-    t.string   "name"
+    t.string   "name",       :null => false
     t.string   "logo_url"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -23,8 +23,8 @@ ActiveRecord::Schema.define(:version => 20130223185924) do
   add_index "clients", ["name"], :name => "index_clients_on_name", :unique => true
 
   create_table "web_sites", :force => true do |t|
-    t.string   "url"
-    t.integer  "client_id"
+    t.string   "url",        :null => false
+    t.integer  "client_id",  :null => false
     t.boolean  "monitored"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
