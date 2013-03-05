@@ -1,0 +1,11 @@
+<ul>
+<% Client.all.each do |client| %>
+	<li><%= client.name %>
+		<ul>
+		<% client.web_sites.each do |foo| %>
+			<li><%= foo.url %></li>
+		<% end %>
+		</ul>
+	</li>
+<% end %>
+</ul>
