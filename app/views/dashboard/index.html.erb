@@ -2,8 +2,8 @@
 <% Client.all.each do |client| %>
 	<li><%= client.name %>
 		<ul>
-		<% client.web_sites.each do |foo| %>
-			<li><%= foo.url %></li>
+		<% client.web_sites.all.each do |foo| %>
+			<li> <a href="<%= foo.url %>"><%= foo.url %></a></li>
 		<% end %>
 		</ul>
 	</li>
