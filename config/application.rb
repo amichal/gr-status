@@ -63,7 +63,7 @@ module GrStatus
     config.assets.enabled = true
 
     config.app_generators do |c|
-      c.template_engine :haml
+      c.template_engine :erb
       c.helper = false
       c.javascripts = false
       c.stylesheets = false
