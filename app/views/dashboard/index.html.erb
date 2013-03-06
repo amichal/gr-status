@@ -1,11 +1,18 @@
-<ul>
-<% Client.all.each do |client| %>
-	<li><%= client.name %>
-		<ul>
-		<% client.web_sites.all.each do |foo| %>
-			<li> <a href="<%= foo.url %>"><%= foo.url %></a></li>
+<div class="container-fluid">
+<% Client.all.each_slice(2) do |clients| %>
+	<div class="row-fluid">
+		<% clients.each do |client| %>
+			<div class="span1 bordered"><img src="<%= client.logo_url %>"></div>
+			<div class="span5 bordered">
+				<li><%= client.name %>
+					<ul>
+					<% client.web_sites.all.each do |website| %>
+						<li> <a href="<%= website.url %>"><%= website.url %></a></li>
+					<% end %>
+					</ul>
+				</li>
+			</div>
 		<% end %>
-		</ul>
-	</li>
+	</div>
 <% end %>
-</ul>
+</div>

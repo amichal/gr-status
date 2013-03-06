@@ -7,64 +7,64 @@
 #   Mayor.create(:name => 'Emanuel', :city => cities.first)
 
 clients = Client.create!([
-	{ :name => 'Starbucks', :web_sites_attributes => [
+	{ :name => 'Starbucks', :logo_url => '/icons/Starbucks.gif', :web_sites_attributes => [
 		{ :url => 'http://demo.cafepractices.info'}, 
 		{ :url => 'http://cafepractices.info'}
 		]
 	}, 
-	{ :name => 'ERS', :web_sites_attributes => [
+	{ :name => 'ERS', :logo_url => '/icons/ERS.png', :web_sites_attributes => [
 		{ :url => 'http://www.system2020.org/'}, 
 		{ :url => 'http://www.erstools.org/dream'}, 
 		{ :url => 'http://www.erstools.org/hold-em'}, 
 		{ :url => 'http://www.erstools.org/assessments/resource_check'}
 		]
 	}, 
-	{ :name => "Author's Guild", :web_sites_attributes => [
+	{ :name => "Author's Guild", :logo_url => "/icons/Author's Guild.png", :web_sites_attributes => [
 		{ :url => 'http://www.authorsguild.org'}, 
 		{ :url => 'http://www.authorsguild.net'}
 		]
 	}, 
-	{ :name => 'Noveda', :web_sites_attributes => [
+	{ :name => 'Noveda', :logo_url => '/icons/Noveda.png', :web_sites_attributes => [
 		{ :url => 'http://www.makemesustainable.com'}, 
 		{ :url => 'Sparks'}
 		]
 	}, 
-	{ :name => 'Bibme', :web_sites_attributes => [
+	{ :name => 'Bibme', :logo_url => '/icons/Bibme.png', :web_sites_attributes => [
 		{ :url => 'http://www.bibme.org'}
 		]
 	}, 
-	{ :name => 'CADH', :web_sites_attributes => [
+	{ :name => 'CADH', :logo_url => '/icons/CADH.png', :web_sites_attributes => [
 		{ :url => 'http://index.healthequityalliance.us'}
 		]
-	}, { :name => 'Timeslips', :web_sites_attributes => [
+	}, { :name => 'Timeslips', :logo_url => '/icons/TimeSlips.png', :web_sites_attributes => [
 		{ :url => 'http://www.timeslips.org'}
 		]
-	}, { :name => 'USGBC', :web_sites_attributes => [
+	}, { :name => 'USGBC', :logo_url => '/icons/USGBC.png', :web_sites_attributes => [
 		{ :url => 'http://www.gbig.org'}, 
 		{ :url => 'http://gbig-staging.greenriver.org'}
 		]
-	}, { :name => 'FCA', :web_sites_attributes => [
+	}, { :name => 'FCA', :logo_url => '/icons/FCA.jpeg', :web_sites_attributes => [
 		{ :url => 'http://www.foundationforcontemporaryarts.org'}
 		]
-	}, { :name => 'UVA', :web_sites_attributes => [
+	}, { :name => 'UVA', :logo_url => 'http://placehold.it/100x100', :web_sites_attributes => [
 		{ :url => 'CanLead'}, 
 		{ :url => 'Courseware'}, 
 		{ :url => 'ETIPS'}
 		]
-	}, { :name => 'KCS', :web_sites_attributes => [
+	}, { :name => 'KCS', :logo_url => '/icons/KCS.png', :web_sites_attributes => [
 		{ :url => 'https://www.kidzcentralstation.com'}, 
 		{ :url => 'http://kcs-staging.herokuapp.com'}
 		]
-	}, { :name => 'VT', :web_sites_attributes => [
+	}, { :name => 'VT', :logo_url => '/icons/VT.gif', :web_sites_attributes => [
 		{ :url => 'http://www.vtmidi.org'}
 		]
-	}, { :name => 'Learning Forward', :web_sites_attributes => [
+	}, { :name => 'Learning Forward', :logo_url => '/icons/Learning Forward.gif', :web_sites_attributes => [
 		{ :url => 'http://www.sai-learningforward.org'}
 		]
-	}, { :name => 'YSA', :web_sites_attributes => [
+	}, { :name => 'YSA', :logo_url => '/icons/YSA.png', :web_sites_attributes => [
 		{ :url => 'http://members.ysaleagues.com'}
 		]
-	}, { :name => 'NEA', :web_sites_attributes => [
+	}, { :name => 'NEA', :logo_url => '/icons/NEA.gif', :web_sites_attributes => [
 		{ :url => 'http://www.keysonline.org'}
 		]
 	}
