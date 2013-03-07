@@ -7,6 +7,7 @@ gem 'jquery-rails'
 gem 'haml-rails'
 gem 'kaminari'
 gem 'typus'
+gem 'htmlentities'
 
 group :assets do
   gem 'sass-rails'
@@ -18,6 +19,9 @@ group :test do
   gem 'rspec-rails'
 end
 
+group :development do
+	gem 'ruby-debug19'
+end
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

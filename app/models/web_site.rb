@@ -5,4 +5,8 @@ class WebSite < ActiveRecord::Base
   validates :url, :presence => true, :uniqueness=>true
 
   belongs_to :client, :inverse_of=>:web_sites
+
+  def host
+  	URI.parse(self.url).host
+  end
 end

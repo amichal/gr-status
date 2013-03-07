@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid">		
 <% Client.all.each_slice(2) do |clients| %>
 	<div class="row-fluid">
 		<% clients.each do |client| %>
@@ -7,7 +7,28 @@
 				<li><%= client.name %>
 					<ul>
 					<% client.web_sites.all.each do |website| %>
-						<li> <a href="<%= website.url %>"><%= website.url %></a></li>
+						<li>
+							<a href="<%= website.url %>"><%= website.url %></a>
+							<% status = find_status(website) %>
+							<span class='pull-right'>
+							<% if status %>
+								<% if /OK/.match(status['service_status']) %>
+									<span class="label label-success"><%= status['service_status'] %></span>
+									<% thing = HTMLEntities.new.decode(status['service_plugin_output']) %>
+									<% match = /[.0-9]+ second/.match(thing) %>
+								<% elsif /CRITICAL/.match(status['service_status'])%>
+									<span class="label label-important"><%= status['service_status'] %></span>
+								<% else %>
+									<span class="label label-default"><%= status['service_status'] %></span>
+								<% end %>
+								<% if match %>
+									<span class="label label-success"><%= match %></span>
+								<% end %>
+							<% else %>
+								<span class="label label-warning">Not Monitored</span>
+							<% end %>
+							</span>
+						</li>
 					<% end %>
 					</ul>
 				</li>
