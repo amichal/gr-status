@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.2.12'
 gem 'pg'
-gem 'json'
+  gem 'json'
 gem 'jquery-rails'
 gem 'haml-rails'
 gem 'kaminari'
@@ -21,6 +21,7 @@ end
 
 group :development do
 	gem 'ruby-debug19'
+  gem 'sqlite'
 end
 
 # To use ActiveModel has_secure_password
