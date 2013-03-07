@@ -12,7 +12,8 @@
  *= require_tree .
  */
 .bordered{
-	border-bottom:1px solid red;
+	border-bottom:1px solid #dddddd;
 	height:100px;
+	padding-bottom:10px;
 	margin-bottom:10px;
 }
