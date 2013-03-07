@@ -1,10 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.2.12'
-group :production do
-  gem 'pg'
-end
-
+gem 'pg'
 gem 'json'
 gem 'jquery-rails'
 gem 'haml-rails'
