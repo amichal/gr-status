@@ -25,16 +25,16 @@ clients = Client.create!([
 		]
 	}, 
 	{ :name => 'Noveda', :logo_url => '/icons/Noveda.png', :web_sites_attributes => [
-		{ :url => 'http://www.makemesustainable.com'}, 
-		{ :url => 'Sparks'}
-		]
+		{ :url => 'http://www.makemesustainable.com'}
+    ]
 	}, 
 	{ :name => 'Bibme', :logo_url => '/icons/Bibme.png', :web_sites_attributes => [
 		{ :url => 'http://www.bibme.org'}
 		]
 	}, 
 	{ :name => 'CADH', :logo_url => '/icons/CADH.png', :web_sites_attributes => [
-		{ :url => 'http://index.healthequityalliance.us'}
+		{ :url => 'http://index.healthequityalliance.us'},
+    { :url => 'http://www.sdoh.org'}
 		]
 	}, { :name => 'Timeslips', :logo_url => '/icons/TimeSlips.png', :web_sites_attributes => [
 		{ :url => 'http://www.timeslips.org'}
@@ -47,7 +47,8 @@ clients = Client.create!([
 		]
 	}, { :name => 'UVA', :logo_url => 'http://placehold.it/100x100', :web_sites_attributes => [
 		{ :url => 'http://canlead.net'}, 
-		{ :url => 'Courseware'}, 
+		{ :url => 'http://dev.canlead.net'}, 
+		{ :url => 'http://course.canlead.net'}, 
 		{ :url => 'http://www.etips.info'}
 		]
 	}, { :name => 'KCS', :logo_url => '/icons/KCS.png', :web_sites_attributes => [
