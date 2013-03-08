@@ -8,16 +8,18 @@
 					<div class="pull-left"><img width='80' src="<%= client.logo_url %>"></div>
 					<div class="media-body">
 						<% client.web_sites.all.each do |website| %>
+							<% status = find_status(website) %>
+							<% status = find_status(website) %>
+							<% up = status && /OK/.match(status['service_status']) %>
 							<!-- These are the websites and their labels -->
 							<div class="row-fluid">
 								<div class="span6">
 									<a href="<%= website.url %>"><%= website.host.to_s.gsub(/^www\./,'') %><%= website.path %></a>
 								</div>
-								<% status = find_status(website) %>
 								<div class="span2">
 									<span class='pull-right'>
 										<% if status %>
-											<% if /OK/.match(status['service_status']) %>
+											<% if up  %>
 												<% status_output = HTMLEntities.new.decode(status['service_plugin_output']) %>
 												<% time_match = /([.0-9]+) second/.match(status_output) %>
 												<span class="label label-success"><%= status['service_status'] %> - <%= (time_match[1].to_f*1000).to_i %>ms</span>
@@ -33,16 +35,18 @@
 								</div>
 								<!-- These are the charts -->
 								<div class="span4">
-									<div id="chart_<%= h(website.url) %>" style="width: 100px; height: 50px; border: 1px solid red"></div>
-									<script type="text/javascript">
-										$(function () {
-		    								$(document).ready(function() {
-		        								drawchart("chart_<%= h(website.url) %>", 
-		        									<%= website.response_time_ms_1_minute_interval.to_json.html_safe %>
-		        								);
-		    								});
-										});
-									</script>
+									<% if up %>
+										<div id="chart_<%= h(website.url) %>" style="width: 100px; height: 50px; border: 1px solid red"></div>
+										<script type="text/javascript">
+											$(function () {
+			    								$(document).ready(function() {
+			        								drawchart("chart_<%= h(website.url) %>", 
+			        									<%= website.response_time_ms_1_minute_interval.to_json.html_safe %>
+			        								);
+			    								});
+											});
+										</script>
+									<% end %>
 								</div>
 							</div>
 						<% end %>

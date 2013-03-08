@@ -66,6 +66,9 @@ clients = Client.create!([
 	}, { :name => 'NEA', :logo_url => '/icons/NEA.gif', :web_sites_attributes => [
 		{ :url => 'http://www.keysonline.org'}
 		]
+	}, { :name => 'BuildingGreen', :logo_url => '/icons/bg.png', :web_sites_attributes => [
+		{ :url => 'http://www.buildinggreen.com'}
+		]
 	}, { :name => 'Foundation for Arts Initiatives', :logo_url => '/icons/ffai.gif', :web_sites_attributes => [
 		{ :url => 'http://www.ffaiarts.net'}
 		]
