@@ -66,6 +66,36 @@ clients = Client.create!([
 	}, { :name => 'NEA', :logo_url => '/icons/NEA.gif', :web_sites_attributes => [
 		{ :url => 'http://www.keysonline.org'}
 		]
+	}, { :name => 'Foundation for Arts Initiatives', :logo_url => '/icons/ffai.gif', :web_sites_attributes => [
+		{ :url => 'http://www.ffaiarts.net'}
+		]
+	}, { :name => 'Citizens Committee for New York City', :logo_url => '/icons/ccnyc.gif', :web_sites_attributes => [
+		{ :url => 'http://www.citizensnyc.org'}
+		]
+	}, { :name => 'The Bohen Foundation', :logo_url => '/icons/bohen.png', :web_sites_attributes => [
+		{ :url => 'http://www.bohen.org'}
+		]
+	}, { :name => 'Saltzman Institute of War and Peace Studies', :web_sites_attributes => [
+		{ :url => 'http://www.siwps.com'}
+		]
+	}, { :name => 'League of Rural Voters', :logo_url => '/icons/lorv.gif', :web_sites_attributes => [
+		{ :url => 'http://www.leagueofruralvoters.org'}
+		]
+	}, { :name => 'Main Street Project', :logo_url => '/icons/msp.png', :web_sites_attributes => [
+		{ :url => 'http://www.mainstreetproject.org'}
+		]
+	}, { :name => 'WEA Special Education Support Center', :logo_url => '/icons/sesc.png', :web_sites_attributes => [
+		{ :url => 'http://www.specialeducationsupportcenter.org'}
+		]
+	}, { :name => 'TURN Exchange', :logo_url => '/icons/turn.gif', :web_sites_attributes => [
+		{ :url => 'http://www.turnexchange.net'}
+		]
+	}, { :name => 'ECHO', :web_sites_attributes => [
+		{ :url => 'http://www.echospace.org'}
+		]
+	}, { :name => 'Learning Options', :logo_url => '/icons/lo.png', :web_sites_attributes => [
+		{ :url => 'http://www.learningoptions.net'}
+		]
 	}
 
 	])
