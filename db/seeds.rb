@@ -47,9 +47,9 @@ clients = Client.create!([
 		{ :url => 'http://www.foundationforcontemporaryarts.org'}
 		]
 	}, { :name => 'UVA', :logo_url => 'http://placehold.it/100x100', :web_sites_attributes => [
-		{ :url => 'CanLead'}, 
+		{ :url => 'http://canlead.net'}, 
 		{ :url => 'Courseware'}, 
-		{ :url => 'ETIPS'}
+		{ :url => 'http://www.etips.info'}
 		]
 	}, { :name => 'KCS', :logo_url => '/icons/KCS.png', :web_sites_attributes => [
 		{ :url => 'https://www.kidzcentralstation.com'}, 
