@@ -1,8 +1,8 @@
 <div class="container-fluid">		
-<% Client.all.each_slice(2) do |clients| %>
+<% Client.all.each_slice(4) do |clients| %>
 	<div class="row-fluid">
 		<% clients.each do |client| %>
-			<div class="span6">
+			<div class="span3">
 				<div class="media bordered">
 					<b><%= client.name %></b>
 					<div class="pull-left"><img width='80' src="<%= client.logo_url %>"></div>
