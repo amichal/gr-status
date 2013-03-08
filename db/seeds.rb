@@ -40,9 +40,8 @@ clients = Client.create!([
 		{ :url => 'http://www.timeslips.org'}
 		]
 	}, { :name => 'USGBC', :logo_url => '/icons/USGBC.png', :web_sites_attributes => [
-		{ :url => 'http://www.gbig.org'}, 
-		{ :url => 'http://gbig-staging.greenriver.org'}
-		]
+		{ :url => 'http://www.gbig.org'}
+    ]
 	}, { :name => 'FCA', :logo_url => '/icons/FCA.jpeg', :web_sites_attributes => [
 		{ :url => 'http://www.foundationforcontemporaryarts.org'}
 		]
@@ -52,9 +51,8 @@ clients = Client.create!([
 		{ :url => 'http://www.etips.info'}
 		]
 	}, { :name => 'KCS', :logo_url => '/icons/KCS.png', :web_sites_attributes => [
-		{ :url => 'https://www.kidzcentralstation.com'}, 
-		{ :url => 'http://kcs-staging.herokuapp.com'}
-		]
+		{ :url => 'https://www.kidzcentralstation.com'}
+    ]
 	}, { :name => 'VT', :logo_url => '/icons/VT.gif', :web_sites_attributes => [
 		{ :url => 'http://www.vtmidi.org'}
 		]

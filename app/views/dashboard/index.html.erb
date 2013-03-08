@@ -2,36 +2,34 @@
 <% Client.all.each_slice(2) do |clients| %>
 	<div class="row-fluid">
 		<% clients.each do |client| %>
-			<div class="span1 bordered"><img src="<%= client.logo_url %>"></div>
-			<div class="span5 bordered">
-				<li><%= client.name %>
-					<ul>
-					<% client.web_sites.all.each do |website| %>
-						<li>
-							<a href="<%= website.url %>"><%= website.url %></a>
-							<% status = find_status(website) %>
-							<span class='pull-right'>
-							<% if status %>
-								<% if /OK/.match(status['service_status']) %>
-									<span class="label label-success"><%= status['service_status'] %></span>
-									<% thing = HTMLEntities.new.decode(status['service_plugin_output']) %>
-									<% match = /[.0-9]+ second/.match(thing) %>
-								<% elsif /CRITICAL/.match(status['service_status'])%>
-									<span class="label label-important"><%= status['service_status'] %></span>
+			<div class="span6">
+				<div class="media bordered">
+					<b><%= client.name %></b>
+					<div class="pull-left hidden-phone"><img width='80' src="<%= client.logo_url %>"></div>
+					<div class="media-body">
+						<% client.web_sites.all.each do |website| %>
+							<div>
+								<a href="<%= website.url %>"><%= website.host.to_s.gsub(/^www\./,'') %><%= website.path %></a>
+								<% status = find_status(website) %>
+								<span class='pull-right'>
+								<% if status %>
+									<% if /OK/.match(status['service_status']) %>
+										<% status_output = HTMLEntities.new.decode(status['service_plugin_output']) %>
+										<% time_match = /([.0-9]+) second/.match(status_output) %>
+										<span class="label label-success"><%= status['service_status'] %> - <%= (time_match[1].to_f*1000).to_i %>ms</span>
+									<% elsif /CRITICAL/.match(status['service_status'])%>
+										<span class="label label-important"><%= status['service_status'] %></span>
+									<% else %>
+										<span class="label label-default"><%= status['service_status'] %></span>
+									<% end %>
 								<% else %>
-									<span class="label label-default"><%= status['service_status'] %></span>
+									<span class="label label-warning">Not Monitored</span>
 								<% end %>
-								<% if match %>
-									<span class="label label-success"><%= match %></span>
-								<% end %>
-							<% else %>
-								<span class="label label-warning">Not Monitored</span>
-							<% end %>
-							</span>
-						</li>
-					<% end %>
-					</ul>
-				</li>
+								</span>
+							</div>
+						<% end %>
+					</div>
+				</div>
 			</div>
 		<% end %>
 	</div>
