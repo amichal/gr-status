@@ -9,7 +9,21 @@ class WebSite < ActiveRecord::Base
   def host
     URI.parse(self.url).host
   end
+
   def path
     URI.parse(self.url).path
   end
+
+  def response_time_ms_1_minute_interval
+    prng = Random.new
+    start = prng.rand(15...250)
+    last = start
+    (0..60).map do
+       if prng.rand(100) > 95
+         nil
+       else
+         last += prng.rand(-10...10)
+       end  
+    end
+  end 
 end
