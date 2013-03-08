@@ -18,12 +18,18 @@ class WebSite < ActiveRecord::Base
     prng = Random.new
     start = prng.rand(15...250)
     last = start
-    (0..60).map do
-       if prng.rand(100) > 95
+    d = (0..15).map do
+       if prng.rand(100) > 98
          nil
        else
-         last += prng.rand(-10...10)
+         last += prng.rand(-30...30)
        end  
     end
+    d << {
+        :y => d.last,
+        :dataLabels => {
+          :enabled =>  true
+        }
+      }
   end 
 end
