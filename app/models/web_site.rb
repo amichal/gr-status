@@ -36,4 +36,27 @@ class WebSite < ActiveRecord::Base
         }
       }
   end 
+
+  def requests_per_minute
+    prng = Random.new
+    start = prng.rand(0...600)
+    last = start
+    d = (0..15).map do
+       if prng.rand(100) > 98
+         nil
+       else
+         last += prng.rand(-30...30)
+       end  
+    end
+    d << {
+        :y => d.last,
+        :dataLabels => {
+          :enabled =>  true,
+          :align => 'left',
+          :crop => 'false',
+          :x => 3,
+          :verticalAlign => 'middle'
+        }
+      }
+  end 
 end
