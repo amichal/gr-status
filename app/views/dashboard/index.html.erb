@@ -40,7 +40,7 @@
 										<script type="text/javascript">
 											$(function () {
 			    								$(document).ready(function() {
-			        								drawchart("chart_<%= h(website.url) %>", 
+			        								smallchart("chart_<%= h(website.url) %>", 
 			        									<%= website.response_time_ms_1_minute_interval.to_json.html_safe %>
 			        								);
 			    								});

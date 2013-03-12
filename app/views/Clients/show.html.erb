@@ -1,2 +1,49 @@
-<%= @client.name %>
-<p>this is a change</p>
+
+
+<h1><%= @client.name %></h1>
+<h2>About <%= @client.name %></h2>
+<p>
+This will be some information about the company.  Do we need to put this is seeds?  Or maybe have this blurb stored somewhere else and somehow coded to the client name?  Anyways, I'm sure they're a great company and do lots of cool stuff and junk.
+</p>
+<h2>Stats</h2>
+<ul>
+<li>Time worked (lots)</li>
+<li>Issues resolved (7)</li>
+<li>Sandwiches eaten (5)</li>
+</ul>
+<h2>Websites</h2>
+<div class='container-fluid'>
+	<% @client.web_sites.all.each_slice(2) do |websites|%>
+		<div class='row-fluid'>
+			<% websites.each do |website| %>
+				<div class='span6'>
+					<h3><a href='<%= website.url %>'><%= website.url %></a></h3>
+					<h4>Response Time</h4>
+					<div id="chart_<%= h(website.url) %>" style="width: 100px; height: 50px; border: 1px solid red">
+						<script type="text/javascript">
+							$(function () {
+								$(document).ready(function() {
+									bigchart("chart_<%= h(website.url) %>", 
+										<%= website.response_time_ms_1_minute_interval.to_json.html_safe %>
+									);
+								});
+							});
+						</script>
+					</div>
+					<h4>Requests per Minute</h4>
+					<div>
+						Put a chart here
+					</div>
+					<h4>Users</h4>
+					<div>
+						Put a chart here
+					</div>
+					<h4>Recent Deployments</h4>
+					<div>
+						Put a chart here
+					</div>
+				</div>
+			<% end%>
+		</div>
+	<% end %>
+</div>

@@ -17,7 +17,8 @@
 
 <!-- This is the javascript for the Highcharts stuff -->
 <script type='text/javascript'>
-function drawchart (renderto, series_data, series_name){
+function smallchart (renderto, series_data, series_name){
+// This function makes the small charts on the main dashboard
 new Highcharts.Chart({
             credits: {
             enabled: false
@@ -84,8 +85,81 @@ new Highcharts.Chart({
                 data: series_data
             }]
         });
-
 }
+
+function bigchart (renderto, series_data, series_name){
+// This function makes the larger charts on the individual client pages.
+// I might need to make these different functions for different charts
+// depending on what kinds of charts they are and whether or not they
+// all can look the same.
+new Highcharts.Chart({
+            credits: {
+            enabled: false
+            },
+            legend: {
+            enabled: false,
+            padding: 0,
+            margin: 0,
+            },
+            chart: {
+                renderTo: renderto,
+                marginRight: 30,
+                marginBottom: 0,
+                type: 'line',
+                animation: false,
+                spacingTop: 0,
+                spacingBottom: 0,
+                spacingLeft: 0,
+                spacingRight: 0
+            },
+            title: {
+                text: null,
+                margin: 0
+            },
+            xAxis: {
+                tickColor: null,
+                maxPadding: 0,
+                lineColor: null, 
+                labels: {
+                    enabled: false
+                }
+            },
+            yAxis: {
+                gridLineColor: null, 
+                maxPadding: 0,
+                title: {
+                    text: null
+                },
+                labels: {
+                    enabled: false
+                }
+            },
+            tooltip: {
+                enabled: false
+            },
+            plotOptions: {
+                line: {
+                    animation: false,
+                    marker: {
+                        enabled: false,
+                        states: {
+                            hover: {
+                                enabled: false
+                            },
+                            select: {
+                                enabled: false
+                            }
+                        }
+                    }
+                }
+            },
+            series: [{
+                name: series_name,
+                data: series_data
+            }]
+        });
+}
+
 </script>
 
 </body>
