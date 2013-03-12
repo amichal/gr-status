@@ -4,7 +4,7 @@
 		<% clients.each do |client| %>
 			<div class="span6">
 				<div class="media bordered">
-					<a href='<%= client_path(client) %>'><%= client.name %></b>
+					<b><a href='<%= client_path(client) %>'><%= client.name %></a></b>
 					<div class="pull-left"><img width='80' src="<%= client.logo_url %>"></div>
 					<div class="media-body">
 						<% client.web_sites.all.each do |website| %>

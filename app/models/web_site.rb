@@ -28,7 +28,11 @@ class WebSite < ActiveRecord::Base
     d << {
         :y => d.last,
         :dataLabels => {
-          :enabled =>  true
+          :enabled =>  true,
+          :align => 'left',
+          :crop => 'false',
+          :x => 3,
+          :verticalAlign => 'middle'
         }
       }
   end 
