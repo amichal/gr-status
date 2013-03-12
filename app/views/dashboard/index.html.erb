@@ -1,10 +1,10 @@
 <div class="container-fluid">		
-<% Client.all.each_slice(4) do |clients| %>
+<% Client.all.each_slice(2) do |clients| %>
 	<div class="row-fluid">
 		<% clients.each do |client| %>
-			<div class="span3">
+			<div class="span6">
 				<div class="media bordered">
-					<b><%= client.name %></b>
+					<a href='<%= client_path(client) %>'><%= client.name %></b>
 					<div class="pull-left"><img width='80' src="<%= client.logo_url %>"></div>
 					<div class="media-body">
 						<% client.web_sites.all.each do |website| %>

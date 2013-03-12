@@ -1,5 +1,6 @@
 GrStatus::Application.routes.draw do
   match 'dashboard' => 'dashboard#index'
+  resources :clients
 
 
   # The priority is based upon order of creation:
