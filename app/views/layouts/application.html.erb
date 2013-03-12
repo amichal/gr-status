@@ -23,19 +23,28 @@ new Highcharts.Chart({
             enabled: false
             },
             legend: {
-            enabled: false
+            enabled: false,
+            padding: 0,
+            margin: 0,
             },
             chart: {
                 renderTo: renderto,
                 marginRight: 30,
+                marginBottom: 0,
+                type: 'line',
                 animation: false,
-                type: 'line'
+                spacingTop: 0,
+                spacingBottom: 0,
+                spacingLeft: 0,
+                spacingRight: 0
             },
             title: {
-                text: null
+                text: null,
+                margin: 0
             },
             xAxis: {
                 tickColor: null,
+                maxPadding: 0,
                 lineColor: null, 
                 labels: {
                     enabled: false
@@ -43,6 +52,7 @@ new Highcharts.Chart({
             },
             yAxis: {
                 gridLineColor: null, 
+                maxPadding: 0,
                 title: {
                     text: null
                 },
