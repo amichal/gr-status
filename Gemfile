@@ -8,6 +8,7 @@ gem 'haml-rails'
 gem 'kaminari'
 gem 'typus'
 gem 'htmlentities'
+gem 'harvested'
 
 group :assets do
   gem 'sass-rails'

@@ -7,7 +7,7 @@
 #   Mayor.create(:name => 'Emanuel', :city => cities.first)
 
 clients = Client.create!([
-	{ :name => 'Starbucks Coffee Company', :logo_url => '/icons/Starbucks.gif', :web_sites_attributes => [
+	{ :name => 'Starbucks Coffee Company', :description=> 'Hi there', :harvest_client_id => 1, :logo_url => '/icons/Starbucks.gif', :web_sites_attributes => [
 		{ :url => 'http://demo.cafepractices.info'}, 
 		{ :url => 'http://cafepractices.info'}
 		]

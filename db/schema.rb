@@ -11,13 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130223185924) do
+ActiveRecord::Schema.define(:version => 20130313175701) do
 
   create_table "clients", :force => true do |t|
-    t.string   "name",       :null => false
+    t.string   "name",              :null => false
     t.string   "logo_url"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.string   "description"
+    t.string   "harvest_client_id"
   end
 
   add_index "clients", ["name"], :name => "index_clients_on_name", :unique => true

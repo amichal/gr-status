@@ -1,23 +1,35 @@
-
-
-<h1><%= @client.name %></h1>
-<h2>About <%= @client.name %></h2>
-<p>
-This will be some information about the company.  Do we need to put this in seeds?  Or maybe have this blurb stored somewhere else and somehow coded to the client name?  Anyways, I'm sure they're a great company and do lots of cool stuff and junk.
-</p>
-<h2>Stats</h2>
-<ul>
-<li>Hours Worked: <%= @client.hours %></li>
-<li>Issues resolved: <%= @client.hours/2 %></li>
-<li>Sandwiches eaten: <%= @client.hours/4 %></li>
+<ul class='breadcrumb'>
+<li><a href ='../dashboard'>Dashboard</a><span class='divider'>/</span></li>
+<li class='active'><%= @client.name %></li>
 </ul>
-<h2>Websites</h2>
+<h1><%= @client.name %></h1>
+<!--
+<p> Here is a test of the harvest stuff.</p>
+<% harvest = Harvest.client('greenriverorg', 'imahoney@marlboro.edu', 'imaharvester2') %>
+<p><%= debug harvest.clients.all %></p>
+<p>One of the clients is: <%= harvest.clients.find(1566571).name %> </p>
+-->
 <div class='container-fluid'>
-	<% @client.web_sites.all.each_slice(2) do |websites|%>
-		<div class='row-fluid'>
-			<% websites.each do |website| %>
-				<div class='span6'>
-					<h3><a href='<%= website.url %>'><%= website.url %></a></h3>
+	<div class='row-fluid'>
+		<div class='span1'><img width='80' src="<%= @client.logo_url %>"></div>
+		<div class='span11'>
+			<p>
+			This will be some information about the company.  Do we need to put this in seeds?  Or maybe have this blurb stored somewhere else and somehow coded to the client name?  Anyways, I'm sure they're a great company and do lots of cool stuff and junk.
+			</p>
+		</div>
+	</div>
+	<div class='row-fluid'>
+		<div class='span4'><p><strong>Hours Worked</strong>: <%= @client.hours %></p></div>
+		<div class='span4'><p><strong>Issues resolved</strong>: <%= @client.hours/2 %></p></div>
+		<div class='span4'><p><strong>Sandwiches eaten</strong>: <%= @client.hours/4 %></p></div>
+	</div>
+</div>
+<div class='container-fluid'>
+	<% @client.web_sites.all.each_slice(1) do |websites|%>
+		<% websites.each do |website| %>
+			<h3><a href='<%= website.url %>'><%= website.url %></a></h3>
+			<div class='row-fluid'>
+				<div class='span3'>
 					<h4>Response Time</h4>
 					<div id="rtime_<%= h(website.url) %>" style="width: 300px; height: 150px; border: 1px solid red">
 						<script type="text/javascript">
@@ -30,6 +42,8 @@ This will be some information about the company.  Do we need to put this in seed
 							});
 						</script>
 					</div>
+				</div>
+				<div class='span3'>
 					<h4>Requests per Minute</h4>
 					<div id="rpm_<%= h(website.url) %>" style="width: 300px; height: 150px; border: 1px solid red">
 						<script type="text/javascript">
@@ -42,6 +56,8 @@ This will be some information about the company.  Do we need to put this in seed
 							});
 						</script>
 					</div>
+				</div>
+				<div class='span3'>
 					<h4>Users</h4>
 					<div id="users_<%= h(website.url) %>" style="width: 300px; height: 150px; border: 1px solid red">
 						<script type="text/javascript">
@@ -54,6 +70,8 @@ This will be some information about the company.  Do we need to put this in seed
 							});
 						</script>
 					</div>
+				</div>
+				<div class='span3'>
 					<h4>Recent Deployments</h4>
 					<div>
 						<ol>
@@ -64,7 +82,8 @@ This will be some information about the company.  Do we need to put this in seed
 						</ol>
 					</div>
 				</div>
-			<% end%>
-		</div>
+			</div>
+			<hr>
+		<% end%>
 	<% end %>
 </div>

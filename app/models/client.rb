@@ -1,6 +1,6 @@
 class Client < ActiveRecord::Base
   attr_accessible :logo_url, :name, :as=>:admin
-  attr_accessible :logo_url, :name, :web_sites_attributes
+  attr_accessible :logo_url, :name, :web_sites_attributes, :description, :harvest_client_id
 
   validates :name, :presence => true, :uniqueness=>true
 
