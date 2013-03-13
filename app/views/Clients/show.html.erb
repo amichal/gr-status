@@ -7,9 +7,9 @@ This will be some information about the company.  Do we need to put this in seed
 </p>
 <h2>Stats</h2>
 <ul>
-<li>Time worked (lots)</li>
-<li>Issues resolved (7)</li>
-<li>Sandwiches eaten (5)</li>
+<li>Hours Worked: <%= @client.hours %></li>
+<li>Issues resolved: <%= @client.hours/2 %></li>
+<li>Sandwiches eaten: <%= @client.hours/4 %></li>
 </ul>
 <h2>Websites</h2>
 <div class='container-fluid'>
@@ -43,12 +43,25 @@ This will be some information about the company.  Do we need to put this in seed
 						</script>
 					</div>
 					<h4>Users</h4>
-					<div>
-						Put a chart here
+					<div id="users_<%= h(website.url) %>" style="width: 300px; height: 150px; border: 1px solid red">
+						<script type="text/javascript">
+							$(function () {
+								$(document).ready(function() {
+									bigchart("users_<%= h(website.url) %>", 
+										<%= [Random.new.rand(0..20), Random.new.rand(0..20), Random.new.rand(0..20), Random.new.rand(0..20), Random.new.rand(0..20), Random.new.rand(0..20), Random.new.rand(0..20)] %>
+									);
+								});
+							});
+						</script>
 					</div>
 					<h4>Recent Deployments</h4>
 					<div>
-						Put a chart here
+						<ol>
+							<li>Deployment 1</li>
+							<li>Deployment 2</li>
+							<li>Deployment 3</li>
+							<li>Deployment 4</li>
+						</ol>
 					</div>
 				</div>
 			<% end%>
