@@ -9,6 +9,7 @@ gem 'kaminari'
 gem 'typus'
 gem 'htmlentities'
 gem 'harvested'
+gem 'simple_form'
 
 group :assets do
   gem 'sass-rails'
