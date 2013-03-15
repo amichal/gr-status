@@ -1,3 +1,4 @@
+<!-- <%= debug @performance_data %> -->
 <div class="container-fluid">		
 <% Client.all.each_slice(2) do |clients| %>
 	<div class="row-fluid">
@@ -11,6 +12,11 @@
 							<% status = find_status(website) %>
 							<% status = find_status(website) %>
 							<% up = status && /OK/.match(status['service_status']) %>
+							<!--
+							This is where the trouble is.  For some reason, even though it says it's class is 'Array', when I actually try to do anything to that array it complains about there being an undefined method for 'nil class'.
+							<% stuff = find_response_time_data(website) %>
+							<%= debug stuff.class %>
+							-->
 							<!-- These are the websites and their labels -->
 							<div class="row-fluid">
 								<div class="span6">

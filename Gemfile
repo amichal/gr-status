@@ -23,6 +23,7 @@ end
 
 group :development do
 	gem 'ruby-debug19'
+	gem 'pry'
   gem 'sqlite3'
 end
 
