@@ -49,4 +49,28 @@ module ApplicationHelper
 	  end
 	end
 
+	def get_visitors_by_day(website)
+		ga = Gattica.new({
+			:email => 'grstatus@gmail.com',
+			:password => 'somethingbigandrandom'
+			})
+		account = ga.accounts.detect do |account|
+			website.ga_profile_id == account.profile_id
+		end
+		ga.profile_id = ga.accounts.first.profile_id
+		data = ga.get({ 
+    :start_date   => '2013-01-01',
+    :end_date     => '2013-03-05',
+    :dimensions   => ['date'],
+    :metrics      => ['visitors'],
+		})
+		points = []
+		data.points.each do |data_point|
+  		date = data_point.dimensions.first[:date]
+  		visitors = data_point.metrics.first[:visitors]
+  		points.push([date, visitors])
+		end
+		points
+	end
+
 end

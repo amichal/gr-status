@@ -64,7 +64,7 @@
 							$(function () {
 								$(document).ready(function() {
 									bigchart("users_<%= h(website.url) %>", 
-										<%= [Random.new.rand(0..20), Random.new.rand(0..20), Random.new.rand(0..20), Random.new.rand(0..20), Random.new.rand(0..20), Random.new.rand(0..20), Random.new.rand(0..20)] %>
+										<%= get_visitors_by_day(website).to_json.html_safe %>
 									);
 								});
 							});
