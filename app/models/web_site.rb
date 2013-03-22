@@ -14,29 +14,6 @@ class WebSite < ActiveRecord::Base
     URI.parse(self.url).path
   end
 
-  def response_time_ms_1_minute_interval
-    prng = Random.new
-    start = prng.rand(15...250)
-    last = start
-    d = (0..15).map do
-       if prng.rand(100) > 98
-         nil
-       else
-         last += prng.rand(-30...30)
-       end  
-    end
-    d << {
-        :y => d.last,
-        :dataLabels => {
-          :enabled =>  true,
-          :align => 'left',
-          :crop => 'false',
-          :x => 3,
-          :verticalAlign => 'middle'
-        }
-      }
-  end 
-
   def requests_per_minute
     prng = Random.new
     start = prng.rand(0...600)
