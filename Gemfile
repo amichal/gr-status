@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.2.12'
 gem 'pg'
-  gem 'json'
+gem 'json'
 gem 'jquery-rails'
 gem 'haml-rails'
 gem 'kaminari'
@@ -10,6 +10,7 @@ gem 'typus'
 gem 'htmlentities'
 gem 'harvested'
 gem 'simple_form'
+gem 'gattica', :git => 'git://github.com/chrisle/gattica.git'
 
 group :assets do
   gem 'sass-rails'

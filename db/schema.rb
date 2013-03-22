@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130313175701) do
+ActiveRecord::Schema.define(:version => 20130322193105) do
 
   create_table "clients", :force => true do |t|
     t.string   "name",              :null => false
@@ -25,11 +25,13 @@ ActiveRecord::Schema.define(:version => 20130313175701) do
   add_index "clients", ["name"], :name => "index_clients_on_name", :unique => true
 
   create_table "web_sites", :force => true do |t|
-    t.string   "url",        :null => false
-    t.integer  "client_id",  :null => false
+    t.string   "url",           :null => false
+    t.integer  "client_id",     :null => false
     t.boolean  "monitored"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.string   "ga_profile_id"
+    t.string   "ga_metrics"
   end
 
   add_index "web_sites", ["url"], :name => "index_web_sites_on_url", :unique => true

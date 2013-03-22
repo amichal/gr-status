@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/chrisle/gattica.git
+  revision: bb99363eabd1a4a69b5e139efce42d3a40fd8e88
+  specs:
+    gattica (0.6.2)
+      hpricot
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -58,6 +65,7 @@ GEM
       json
     hashie (1.2.0)
     hike (1.2.1)
+    hpricot (0.8.6)
     htmlentities (4.3.1)
     httparty (0.10.2)
       multi_json (~> 1.0)
@@ -167,6 +175,7 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails
+  gattica!
   haml-rails
   harvested
   htmlentities
