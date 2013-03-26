@@ -13,9 +13,9 @@ clients = Client.create!([
 		]
 	}, 
 	{ :name => 'Education Resource Strategies', :logo_url => '/icons/ERS.png', :web_sites_attributes => [
-		{ :url => 'http://www.system2020.org/'}, 
-		{ :url => 'http://www.erstools.org/dream'}, 
-		{ :url => 'http://www.erstools.org/hold-em'}, 
+		{ :url => 'http://www.system2020.org/', :ga_profile_id => '68926892'}, 
+		{ :url => 'http://www.erstools.org/dream', :ga_profile_id => '3599892'}, 
+		{ :url => 'http://www.erstools.org/hold-em', :ga_profile_id => '52525252'}, 
 		{ :url => 'http://www.erstools.org/assessments/resource_check'}
 		]
 	}, 
@@ -40,7 +40,7 @@ clients = Client.create!([
 		{ :url => 'http://www.timeslips.org'}
 		]
 	}, { :name => 'USGBC', :logo_url => '/icons/USGBC.png', :web_sites_attributes => [
-		{ :url => 'http://www.gbig.org'}
+		{ :url => 'http://www.gbig.org', :ga_profile_id => '59704014'}
     ]
 	}, { :name => 'FCA', :logo_url => '/icons/FCA.jpeg', :web_sites_attributes => [
 		{ :url => 'http://www.foundationforcontemporaryarts.org'}
@@ -52,7 +52,7 @@ clients = Client.create!([
 		{ :url => 'http://www.etips.info'}
 		]
 	}, { :name => 'Kidz Central Station, LLC', :logo_url => '/icons/KCS.png', :web_sites_attributes => [
-		{ :url => 'https://www.kidzcentralstation.com'}
+		{ :url => 'https://www.kidzcentralstation.com', :ga_profile_id => '62151399'}
     ]
 	}, { :name => 'VT Midi project', :logo_url => '/icons/VT.gif', :web_sites_attributes => [
 		{ :url => 'http://www.vtmidi.org'}

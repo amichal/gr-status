@@ -29,14 +29,16 @@
 			<div class='row-fluid'>
 				<div class='span3'>
 					<h4>Response Time</h4>
-					<div id="rtime_<%= h(website.url) %>" style="width: 300px; height: 150px; border: 1px solid red">
+					<div class='big_chart' id="rtime_<%= h(website.url) %>" 
+						style="width: 300px; height: 150px; border: 1px solid red">
 						<script type="text/javascript">
 							$(function () {
 								$(document).ready(function() {
 									bigchart("rtime_<%= h(website.url) %>",
 										<% if stuff=find_performance_data(website, 'time') %> 
 										<%= stuff.to_json.html_safe %>
-										<% end %>
+										<% end %>,
+										'Response Time (seconds)'
 									);
 								});
 							});
@@ -44,32 +46,44 @@
 					</div>
 				</div>
 				<div class='span3'>
-					<h4>Requests per Minute</h4>
-					<div id="rpm_<%= h(website.url) %>" style="width: 300px; height: 150px; border: 1px solid red">
-						<script type="text/javascript">
-							$(function () {
-								$(document).ready(function() {
-									bigchart("rpm_<%= h(website.url) %>", 
-										<%= website.requests_per_minute.to_json.html_safe %>
-									);
+					<h4>Requests per Day</h4>
+					<% if get_pageviews_by_day(website) %>
+						<div class='big_chart' id="rpm_<%= h(website.url) %>" 
+							style="width: 300px; height: 150px; border: 1px solid red">
+							<script type="text/javascript">
+								$(function () {
+									$(document).ready(function() {
+										bigchart("rpm_<%= h(website.url) %>", 
+											<%= get_pageviews_by_day(website).to_json.html_safe %>,
+											'Views'
+										);
+									});
 								});
-							});
-						</script>
-					</div>
+							</script>
+						</div>
+					<% else %>
+						<p>no pageview data found</p>
+					<%end %>
 				</div>
 				<div class='span3'>
 					<h4>Users</h4>
-					<div id="users_<%= h(website.url) %>" style="width: 300px; height: 150px; border: 1px solid red">
-						<script type="text/javascript">
-							$(function () {
-								$(document).ready(function() {
-									bigchart("users_<%= h(website.url) %>", 
-										<%= get_visitors_by_day(website).to_json.html_safe %>
-									);
+					<% if get_visitors_by_day(website) %>
+						<div class='big_chart' id="users_<%= h(website.url) %>" 
+							style="width: 300px; height: 150px; border: 1px solid red">
+							<script type="text/javascript">
+								$(function () {
+									$(document).ready(function() {
+										bigchart("users_<%= h(website.url) %>", 
+											<%= get_visitors_by_day(website).to_json.html_safe %>,
+											'Users'
+										);
+									});
 								});
-							});
-						</script>
-					</div>
+							</script>
+						</div>
+					<% else %>
+						<p>no user data found</p>
+					<% end %>
 				</div>
 				<div class='span3'>
 					<h4>Recent Deployments</h4>

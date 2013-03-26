@@ -49,26 +49,46 @@ module ApplicationHelper
 	  end
 	end
 
-	def get_visitors_by_day(website)
-		ga = Gattica.new({
-			:email => 'grstatus@gmail.com',
-			:password => 'somethingbigandrandom'
+	def get_google_analytics_data(website)
+		return nil unless website.ga_profile_id
+		Rails.cache.fetch("#{website.ga_profile_id}_data", :expires_in => 1.hour) do
+			ga = Gattica.new({
+				:email => 'grstatus@gmail.com',
+				:password => 'somethingbigandrandom',
+				:profile_id => website.ga_profile_id
+				})
+			this_account = ga.accounts.detect do |this_account|
+				website.ga_profile_id.to_i == this_account.profile_id
+			end
+			return nil unless this_account
+			ga.profile_id = this_account.profile_id
+			data = ga.get({ 
+	    :start_date   => 3.months.ago.to_s.scan(/\d+-\d+-\d+/)[0],
+	    :end_date     => 1.day.ago.to_s.scan(/\d+-\d+-\d+/)[0],
+	    :dimensions   => ['date'],
+	    :metrics      => ['visitors', 'pageviews'],
 			})
-		account = ga.accounts.detect do |account|
-			website.ga_profile_id == account.profile_id
 		end
-		ga.profile_id = ga.accounts.first.profile_id
-		data = ga.get({ 
-    :start_date   => '2013-01-01',
-    :end_date     => '2013-03-05',
-    :dimensions   => ['date'],
-    :metrics      => ['visitors'],
-		})
+	end
+
+	def get_visitors_by_day(website)
+		return nil unless website.ga_profile_id
 		points = []
-		data.points.each do |data_point|
-  		date = data_point.dimensions.first[:date]
-  		visitors = data_point.metrics.first[:visitors]
+		get_google_analytics_data(website).points.each do |data_point|
+  		date = Time.parse(data_point.dimensions.first[:date]).to_f*1000
+  		visitors = data_point.metrics[0][:visitors]
   		points.push([date, visitors])
+		end
+		points
+	end
+
+	def get_pageviews_by_day(website)
+		return nil unless website.ga_profile_id
+		points = []
+		get_google_analytics_data(website).points.each do |data_point|
+  		date = Time.parse(data_point.dimensions.first[:date]).to_f*1000
+  		pageviews = data_point.metrics[1][:pageviews]
+  		points.push([date, pageviews])
 		end
 		points
 	end
