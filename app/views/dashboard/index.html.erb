@@ -1,4 +1,3 @@
-<!-- debug @performance_data -->
 <div class="container-fluid">		
 <% Client.all.each_slice(2) do |clients| %>
 	<div class="row-fluid">
@@ -33,7 +32,7 @@
 										<% end %>
 									</span>
 								</div>
-								<!-- These are the charts -->
+								<!-- These are the charts created using the smallchart function -->
 								<div class="span4">
 									<% if stuff=find_performance_data(website, 'time') %>
 										<div id="chart_<%= h(website.url) %>" style="width: 100px; height: 50px; border: 1px solid red"></div>

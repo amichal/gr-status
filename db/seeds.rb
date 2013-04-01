@@ -21,7 +21,7 @@ clients = Client.create!([
 	}, 
 	{ :name => "The Author's Guild", :logo_url => "/icons/Author's Guild.png", :web_sites_attributes => [
 		{ :url => 'http://www.authorsguild.org'}, 
-		{ :url => 'http://www.authorsguild.net'}
+		{ :url => 'http://www.authorsguild.net', :ga_profile_id => '18717496'}
 		]
 	}, 
 	{ :name => 'Noveda Technologies', :logo_url => '/icons/Noveda.png', :web_sites_attributes => [
@@ -33,8 +33,8 @@ clients = Client.create!([
 		]
 	}, 
 	{ :name => 'CADH', :logo_url => '/icons/CADH.png', :web_sites_attributes => [
-		{ :url => 'http://index.healthequityalliance.us'},
-    { :url => 'http://www.sdoh.org'}
+		{ :url => 'http://index.healthequityalliance.us', :ga_profile_id => '36974232'},
+    	{ :url => 'http://www.sdoh.org', :ga_profile_id => '70151662'}
 		]
 	}, { :name => 'Timeslips', :logo_url => '/icons/TimeSlips.png', :web_sites_attributes => [
 		{ :url => 'http://www.timeslips.org'}
