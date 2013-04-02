@@ -38,6 +38,29 @@ a.client_title:visited{color: #000055}
 	border-left: 1px solid #000000;
 }
 
+.bigchart{
+	width: 300px;
+	height: 150px;
+	border: 1px solid #000000
+}
+
 .webline{
 	margin-bottom: 5px
+}
+
+h1{
+	text-align: center
+}
+
+.logo{
+	float: left;
+}
+
+.website_detail{
+	border: 2px solid #000000;
+	background-color: #dddddd;
+}
+
+.chart_title{
+	text-align: center;
 }
