@@ -1,41 +1,40 @@
+<link type="text/css" rel="stylesheet" href="../../assets/stylesheets/application.css">
 <div class="container-fluid">		
 <% Client.all.each_slice(2) do |clients| %>
 	<div class="row-fluid">
 		<% clients.each do |client| %>
 			<div class="span6">
-				<div class="media bordered">
-					<b><a href='<%= client_path(client) %>'><%= client.name %></a></b>
+				<div class="media bordered showoff">
+					<b><a class="client_title" href='<%= client_path(client) %>'><%= client.name %></a></b>
 					<div class="pull-left"><img width='80' src="<%= client.logo_url %>"></div>
 					<div class="media-body">
 						<% client.web_sites.all.each do |website| %>
 							<% status = find_status(website) %>
 							<% up = status && /OK/.match(status['service_status']) %>
 							<!-- These are the websites and their labels -->
-							<div class="row-fluid">
+							<div class="row-fluid webline">
 								<div class="span6">
 									<a href="<%= website.url %>"><%= website.host.to_s.gsub(/^www\./,'') %><%= website.path %></a>
 								</div>
 								<div class="span2">
-									<span class='pull-right'>
-										<% if status %>
-											<% if up  %>
-												<% status_output = HTMLEntities.new.decode(status['service_plugin_output']) %>
-												<% time_match = /([.0-9]+) second/.match(status_output) %>
-												<span class="label label-success"><%= status['service_status'] %> - <%= (time_match[1].to_f*1000).to_i %>ms</span>
-											<% elsif /CRITICAL/.match(status['service_status'])%>
-												<span class="label label-important"><%= status['service_status'] %></span>
-											<% else %>
-												<span class="label label-default"><%= status['service_status'] %></span>
-											<% end %>
+									<% if status %>
+										<% if up  %>
+											<% status_output = HTMLEntities.new.decode(status['service_plugin_output']) %>
+											<% time_match = /([.0-9]+) second/.match(status_output) %>
+											<span class="label label-success"><%= status['service_status'] %> - <%= (time_match[1].to_f*1000).to_i %>ms</span>
+										<% elsif /CRITICAL/.match(status['service_status'])%>
+											<span class="label label-important"><%= status['service_status'] %></span>
 										<% else %>
-											<span class="label label-warning">Not Monitored</span>
+											<span class="label label-default"><%= status['service_status'] %></span>
 										<% end %>
-									</span>
+									<% else %>
+										<span class="label label-warning">Not Monitored</span>
+									<% end %>
 								</div>
 								<!-- These are the charts created using the smallchart function -->
 								<div class="span4">
 									<% if stuff=find_performance_data(website, 'time') %>
-										<div id="chart_<%= h(website.url) %>" style="width: 100px; height: 50px; border: 1px solid red"></div>
+										<div id="chart_<%= h(website.url) %>" class="smallchart"></div>
 										<script type="text/javascript">
 											$(function () {
 			    								$(document).ready(function() {

@@ -17,3 +17,27 @@
 	padding-top:10px;
 	margin-bottom:10px;
 }
+
+.showoff{
+	border: 2px solid #000000;
+	background-color: #dddddd;
+	height: 120px
+}
+
+a:link{color: #000000}
+a:visited{color: #000000}
+a:hover{color: #990000}
+
+a.client_title:link{color: #000099}
+a.client_title:visited{color: #000055}
+
+.smallchart{
+	width: 100px;
+	height: 50px;
+	border-bottom: 1px solid #000000;
+	border-left: 1px solid #000000;
+}
+
+.webline{
+	margin-bottom: 5px
+}

@@ -3,12 +3,6 @@
 <li class='active'><%= @client.name %></li>
 </ul>
 <h1><%= @client.name %></h1>
-<!--
-<p> Here is a test of the harvest stuff.</p>
-<% harvest = Harvest.client('greenriverorg', 'imahoney@marlboro.edu', 'imaharvester2') %>
-<p><%= debug harvest.clients.all %></p>
-<p>One of the clients is: <%= harvest.clients.find(1566571).name %> </p>
--->
 <div class='container-fluid'>
 	<div class='row-fluid'>
 		<div class='span1'><img width='80' src="<%= @client.logo_url %>"></div>
