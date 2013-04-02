@@ -59,6 +59,7 @@ h1{
 .website_detail{
 	border: 2px solid #000000;
 	background-color: #dddddd;
+	clear: left;
 }
 
 .chart_title{
