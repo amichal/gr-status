@@ -1,21 +1,39 @@
+<div class="header">
+	<img src="icons/gr_logo.png">
+</div>
 <div class="container-fluid">		
 <% Client.all.each_slice(2) do |clients| %>
 	<div class="row-fluid">
 		<% clients.each do |client| %>
 			<div class="span6">
-				<div class="media bordered showoff">
+				<div class="media showoff client_small">
 					<b><a class="client_title" href='<%= client_path(client) %>'><%= client.name %></a></b>
-					<div class="pull-left"><img width='80' src="<%= client.logo_url %>"></div>
+					<div class="logo"><img width='80' src="<%= client.logo_url %>"></div>
 					<div class="media-body">
 						<% client.web_sites.all.each do |website| %>
 							<% status = find_status(website) %>
 							<% up = status && /OK/.match(status['service_status']) %>
 							<!-- These are the websites and their labels -->
 							<div class="row-fluid webline">
-								<div class="span6">
+								<span>
 									<a href="<%= website.url %>"><%= website.host.to_s.gsub(/^www\./,'') %><%= website.path %></a>
-								</div>
-								<div class="span2">
+								</span>
+								<!-- These are the charts created using the smallchart function -->
+								<span class="pull-right">
+									<% if stuff=find_performance_data(website, 'time') %>
+										<div id="chart_<%= h(website.url) %>" class="smallchart"></div>
+										<script type="text/javascript">
+											$(function () {
+			    								$(document).ready(function() {
+			        								smallchart("chart_<%= h(website.url) %>", 
+			        									<%= stuff.to_json.html_safe %>
+			        								);
+			    								});
+											});
+										</script>
+									<% end %>
+								</span>
+								<span class="light pull-right">
 									<% if status %>
 										<% if up  %>
 											<% status_output = HTMLEntities.new.decode(status['service_plugin_output']) %>
@@ -29,22 +47,7 @@
 									<% else %>
 										<span class="label label-warning">Not Monitored</span>
 									<% end %>
-								</div>
-								<!-- These are the charts created using the smallchart function -->
-								<div class="span4">
-									<% if stuff=find_performance_data(website, 'time') %>
-										<div id="chart_<%= h(website.url) %>" class="smallchart"></div>
-										<script type="text/javascript">
-											$(function () {
-			    								$(document).ready(function() {
-			        								smallchart("chart_<%= h(website.url) %>", 
-			        									<%= stuff.to_json.html_safe %>
-			        								);
-			    								});
-											});
-										</script>
-									<% end %>
-								</div>
+								</span>
 							</div>
 						<% end %>
 					</div>

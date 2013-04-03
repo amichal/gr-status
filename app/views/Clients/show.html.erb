@@ -17,7 +17,7 @@
 <div class='container-fluid'>
 	<% @client.web_sites.all.each_slice(1) do |websites|%>
 		<% websites.each do |website| %>
-			<div class='website_detail'>
+			<div class='website_detail showoff'>
 				<h3><a href='<%= website.url %>'><%= website.url %></a></h3>
 				<div class='row-fluid'>
 					<div class='span3'>
