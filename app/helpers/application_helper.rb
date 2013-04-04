@@ -19,6 +19,11 @@ module ApplicationHelper
   	end
   end
 
+  def get_git_deployments
+  	client = Octokit::Client.new(:login=>'imahoney@marlboro.edu', :password=>'imagit2')
+  	client.refs('greenriver/usgbc-gbig', 'tags')
+  end
+
 	def nagios_options
 		options = {:http_basic_authentication=>['amichal', 'B#atch18']}
 	end

@@ -11,6 +11,7 @@ gem 'htmlentities'
 gem 'harvested'
 gem 'simple_form'
 gem 'gattica', :git => 'git://github.com/chrisle/gattica.git'
+gem 'octokit'
 
 group :assets do
   gem 'sass-rails'

@@ -35,10 +35,6 @@ body{
 	padding: 3px;
 }
 
-.client_row{
-	border-bottom: 2px solid #000000
-}
-
 .client_small{
 	height: 130px;
 }
