@@ -12,6 +12,7 @@ gem 'harvested'
 gem 'simple_form'
 gem 'gattica', :git => 'git://github.com/chrisle/gattica.git'
 gem 'octokit'
+gem 'omniauth-google-apps'
 
 group :assets do
   gem 'sass-rails'

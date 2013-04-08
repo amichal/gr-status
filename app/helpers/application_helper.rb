@@ -20,7 +20,7 @@ module ApplicationHelper
   end
 
   def get_git_deployments
-  	client = Octokit::Client.new(:login=>'imahoney@marlboro.edu', :password=>'imagit2')
+  	client = Octokit::Client.new(:login=>'gr-api', :password=>'WPRORzj25u3AuGYTPGNCk7fS')
   	client.refs('greenriver/usgbc-gbig', 'tags')
   end
 
