@@ -13,6 +13,7 @@ gem 'simple_form'
 gem 'gattica', :git => 'git://github.com/chrisle/gattica.git'
 gem 'octokit'
 gem 'omniauth-google-apps'
+gem 'omniauth-google'
 
 group :assets do
   gem 'sass-rails'
