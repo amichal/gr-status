@@ -1,0 +1,11 @@
+development:
+  github:
+    login: login
+    password: password
+  nagios:
+    http_basic_authentication:
+      - login
+      - password
+  google_analytics:
+    email: email
+    password: password

@@ -20,12 +20,12 @@ module ApplicationHelper
   end
 
   def get_git_deployments
-  	client = Octokit::Client.new(:login=>'gr-api', :password=>'WPRORzj25u3AuGYTPGNCk7fS')
+  	client = Octokit::Client.new(APP_CONFIG['github'].symbolize_keys)
   	client.refs('greenriver/usgbc-gbig', 'tags')
   end
 
 	def nagios_options
-		options = {:http_basic_authentication=>['amichal', 'B#atch18']}
+		options = APP_CONFIG['nagios'].symbolize_keys
 	end
 
 	def retrieve_status_data
@@ -57,11 +57,10 @@ module ApplicationHelper
 	def get_google_analytics_data(website)
 		return nil unless website.ga_profile_id
 		Rails.cache.fetch("#{website.ga_profile_id}_data", :expires_in => 1.hour) do
-			ga = Gattica.new({
-				:email => 'grstatus@gmail.com',
-				:password => 'somethingbigandrandom',
+			ga = Gattica.new(
+				APP_CONFIG['google_analytics'].symbolize_keys.merge(
 				:profile_id => website.ga_profile_id
-				})
+				))
 			this_account = ga.accounts.detect do |this_account|
 				website.ga_profile_id.to_i == this_account.profile_id
 			end
