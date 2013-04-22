@@ -29,14 +29,24 @@ body{
 }
 
 .showoff{
-	border: 2px solid #000000;
 	background-color: #ffffff;
 	margin: 10px;
 	padding: 3px;
 }
 
 .client_small{
-	height: 130px;
+	height: 148px;
+}
+
+.webline{
+	margin-top: 7px;
+	margin-bottom: 2px;
+	padding-bottom: 5px;
+}
+
+.scrollable{
+	overflow: auto;
+	max-height: 132px;
 }
 
 a:link{color: #000000}
@@ -59,11 +69,6 @@ a.client_title:visited{color: #000055}
 	border: 1px solid #000000
 }
 
-.webline{
-	margin-bottom: 5px;
-	padding-bottom: 4px;
-	border-bottom: 1px dashed #000000;
-}
 
 h1{
 	text-align: center
@@ -85,3 +90,9 @@ h1{
 .light{
 	margin-right: 5px
 }
+
+.login{
+	float: right;
+}
+
+.login a{color: #999999;}

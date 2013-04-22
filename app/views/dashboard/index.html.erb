@@ -9,7 +9,7 @@
 				<div class="media showoff client_small">
 					<b><a class="client_title" href='<%= client_path(client) %>'><%= client.name %></a></b>
 					<div class="logo"><img width='80' src="<%= client.logo_url %>"></div>
-					<div class="media-body">
+					<div class="media-body scrollable">
 						<% client.web_sites.all.each do |website| %>
 							<% status = find_status(website) %>
 							<% up = status && /OK/.match(status['service_status']) %>
