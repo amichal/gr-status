@@ -19,9 +19,19 @@ module ApplicationHelper
   	end
   end
 
-  def get_git_deployments
+	def list_deployments
+		deployment_list = []
+		get_git_deployments('usgbc-gbig').each do |deployment|
+			if deployment['ref'].scan(/production/) != []
+				deployment_list.append(deployment['ref'].scan(/\d{2,}/).first)
+			end
+		end
+		return deployment_list.sort[-5..-1].reverse
+	end
+
+  def get_git_deployments(site)
   	client = Octokit::Client.new(APP_CONFIG['github'].symbolize_keys)
-  	client.refs('greenriver/usgbc-gbig', 'tags')
+  	client.refs("greenriver/#{site}", 'tags')
   end
 
 	def nagios_options
