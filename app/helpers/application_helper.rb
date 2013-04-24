@@ -28,7 +28,7 @@ module ApplicationHelper
 			end
 		end
     return [] if deployment_list.empty? 
-    return deployment_list[-length .. -1].sort.reverse
+    return deployment_list[-5 .. -1].sort.reverse
 	end
 
   def get_git_deployments(repo_path)
