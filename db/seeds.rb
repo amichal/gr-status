@@ -40,7 +40,7 @@ clients = Client.create!([
 		{ :url => 'http://www.timeslips.org'}
 		]
 	}, { :name => 'USGBC', :logo_url => '/icons/USGBC.png', :web_sites_attributes => [
-		{ :url => 'http://www.gbig.org', :ga_profile_id => '59704014'}
+		{ :url => 'http://www.gbig.org', :ga_profile_id => '59704014', :git_path => 'usgbc-gbig',}
     ]
 	}, { :name => 'FCA', :logo_url => '/icons/FCA.jpeg', :web_sites_attributes => [
 		{ :url => 'http://www.foundationforcontemporaryarts.org'}

@@ -79,10 +79,14 @@
 						<h4>Recent Deployments</h4>
 						<div>
 							<ol>
-								<% list_deployments.each do |deployment| %>
-									<li><a href='https://github.com/greenriver/usgbc-gbig/tree/production_<%= deployment %>'>
-									<%= time_ago_in_words(Time.parse(deployment)) %> ago, on 
-									<%= Time.parse(deployment).to_date %></a></li>
+								<% if website.git_path %>
+									<% list_deployments(website).each do |deployment| %>
+										<li><a href='https://github.com/greenriver/usgbc-gbig/tree/production_<%= deployment %>'>
+										<%= time_ago_in_words(Time.parse(deployment)) %> ago, on 
+										<%= Time.parse(deployment).to_date %></a></li>
+									<% end %>
+								<% else %>
+									<p>no Github path found</p>
 								<% end %>
 							</ol>
 						</div>

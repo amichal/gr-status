@@ -1,6 +1,6 @@
 class WebSite < ActiveRecord::Base
-  attr_accessible :monitored, :url, :client_id, :ga_profile_id
-  attr_accessible :monitored, :url, :client_id, :ga_profile_id, :as=>:admin
+  attr_accessible :monitored, :url, :client_id, :ga_profile_id, :git_path
+  attr_accessible :monitored, :url, :client_id, :ga_profile_id, :git_path, :as=>:admin
 
   validates :url, :presence => true, :uniqueness=>true
 

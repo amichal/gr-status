@@ -19,9 +19,9 @@ module ApplicationHelper
   	end
   end
 
-	def list_deployments
+	def list_deployments(website)
 		deployment_list = []
-		get_git_deployments('usgbc-gbig').each do |deployment|
+		get_git_deployments(website.git_path).each do |deployment|
 			if deployment['ref'].scan(/production/) != []
 				deployment_list.append(deployment['ref'].scan(/\d{2,}/).first)
 			end
