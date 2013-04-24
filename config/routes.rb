@@ -1,4 +1,5 @@
 GrStatus::Application.routes.draw do
+  match '/', to: redirect('/dashboard')
   match 'dashboard' => 'dashboard#index'
   match 'auth/:provider/callback', to: 'sessions#create'
   match 'auth/failure', to: redirect('/')
