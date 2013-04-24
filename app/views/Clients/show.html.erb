@@ -81,7 +81,7 @@
 							<ol>
 								<% if website.git_path %>
 									<% list_deployments(website).each do |deployment| %>
-										<li><a href='https://github.com/greenriver/usgbc-gbig/tree/production_<%= deployment %>'>
+										<li><a href='https://github.com/<%= website.git_path %>/tree/production_<%= deployment %>'>
 										<%= time_ago_in_words(Time.parse(deployment)) %> ago, on 
 										<%= Time.parse(deployment).to_date %></a></li>
 									<% end %>

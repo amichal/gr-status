@@ -2,7 +2,7 @@
 
 WebSite:
   fields:
-    default: url, client_id, ga_profile_id
-    form: url, client_id, ga_profile_id
+    default: url, client_id, ga_profile_id, git_path
+    form: url, client_id, ga_profile_id, git_path
   relationships: 
   application: Application

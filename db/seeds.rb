@@ -9,7 +9,7 @@
 clients = Client.create!([
 	{ :name => 'Starbucks Coffee Company', :description=> 'Hi there', :harvest_client_id => 1, :logo_url => '/icons/Starbucks.gif', :web_sites_attributes => [
 		{ :url => 'http://demo.cafepractices.info'}, 
-		{ :url => 'http://cafepractices.info'}
+		{ :url => 'http://cafepractices.info', :git_path => 'greenriver/starbucks-vrs'}
 		]
 	}, 
 	{ :name => 'Education Resource Strategies', :logo_url => '/icons/ERS.png', :web_sites_attributes => [
@@ -40,7 +40,7 @@ clients = Client.create!([
 		{ :url => 'http://www.timeslips.org'}
 		]
 	}, { :name => 'USGBC', :logo_url => '/icons/USGBC.png', :web_sites_attributes => [
-		{ :url => 'http://www.gbig.org', :ga_profile_id => '59704014', :git_path => 'usgbc-gbig',}
+		{ :url => 'http://www.gbig.org', :ga_profile_id => '59704014', :git_path => 'greenriver/usgbc-gbig',}
     ]
 	}, { :name => 'FCA', :logo_url => '/icons/FCA.jpeg', :web_sites_attributes => [
 		{ :url => 'http://www.foundationforcontemporaryarts.org'}
