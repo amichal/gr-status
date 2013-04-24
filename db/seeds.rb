@@ -8,8 +8,8 @@
 
 clients = Client.create!([
 	{ :name => 'Starbucks Coffee Company', :description=> 'Hi there', :harvest_client_id => 1, :logo_url => '/icons/Starbucks.gif', :web_sites_attributes => [
-		{ :url => 'http://demo.cafepractices.info'}, 
-		{ :url => 'http://cafepractices.info', :git_path => 'greenriver/starbucks-vrs', :ga_profile_id=> '13278666'}
+		{ :url => 'http://cafepractices.info', :git_path => 'greenriver/starbucks-vrs', :ga_profile_id=> '13278666'},
+		{ :url => 'http://demo.cafepractices.info'}		
 		]
 	}, 
 	{ :name => 'Education Resource Strategies', :logo_url => '/icons/ERS.png', :web_sites_attributes => [

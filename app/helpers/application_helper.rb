@@ -14,6 +14,7 @@ module ApplicationHelper
 
 	def find_status(website)
     @status_data ||= retrieve_status_data
+    return nil unless @status_data['services']
   	@status_data['services'].detect do |service|
   		service['service_description'] == website.url or service['service_description'] == website.host
   	end
@@ -26,12 +27,15 @@ module ApplicationHelper
 				deployment_list.append(deployment['ref'].scan(/\d{2,}/).first)
 			end
 		end
-		return deployment_list.sort[-5..-1].reverse
+    return [] if deployment_list.empty? 
+    return deployment_list[-length .. -1].sort.reverse
 	end
 
   def get_git_deployments(repo_path)
   	client = Octokit::Client.new(APP_CONFIG['github'].symbolize_keys)
   	client.refs(repo_path, 'tags')
+  rescue
+    []
   end
 
 	def nagios_options
@@ -42,7 +46,9 @@ module ApplicationHelper
 		data_file = open("https://nagios.greenriver.com/cgi-bin/nagios3/status-json.cgi",
 		nagios_options)
 		return JSON.parse(data_file.read)
-	end
+	rescue
+    {}
+  end
 
 	def retrieve_performance_data
 		Rails.cache.fetch('performance_data', :expires_in => 1.minute) do
@@ -62,6 +68,8 @@ module ApplicationHelper
 	    end
 	    performance_data
 	  end
+  rescue
+    {}
 	end
 
 	def get_google_analytics_data(website)
@@ -83,24 +91,28 @@ module ApplicationHelper
 	    :metrics      => ['visitors', 'pageviews'],
 			})
 		end
-	end
+	rescue
+    nil
+  end
 
 	def get_visitors_by_day(website)
 		return nil unless website.ga_profile_id.present?
 		points = []
-		get_google_analytics_data(website).points.each do |data_point|
-  		date = Time.parse(data_point.dimensions.first[:date]).to_f*1000
-  		visitors = data_point.metrics[0][:visitors]
-  		points.push([date, visitors])
-		end
-		points
+		
+    if data = get_google_analytics_data(website)
+      get_google_analytics_data(website).points.each do |data_point|
+    		date = Time.parse(data_point.dimensions.first[:date]).to_f*1000
+    		visitors = data_point.metrics[0][:visitors]
+    		points.push([date, visitors])
+  		end
+  	end
+    points
 	end
 
 	def get_pageviews_by_day(website)
 		return nil unless website.ga_profile_id.present?
 		points = []
-    data = get_google_analytics_data(website)
-    if data
+    if data = get_google_analytics_data(website)
   		data.points.each do |data_point|
     		date = Time.parse(data_point.dimensions.first[:date]).to_f*1000
     		pageviews = data_point.metrics[1][:pageviews]
