@@ -29,9 +29,9 @@ module ApplicationHelper
 		return deployment_list.sort[-6..-1].reverse
 	end
 
-  def get_git_deployments(site)
+  def get_git_deployments(repo_path)
   	client = Octokit::Client.new(APP_CONFIG['github'].symbolize_keys)
-  	client.refs("greenriver/#{site}", 'tags')
+  	client.refs(repo_path, 'tags')
   end
 
 	def nagios_options
@@ -86,7 +86,7 @@ module ApplicationHelper
 	end
 
 	def get_visitors_by_day(website)
-		return nil unless website.ga_profile_id
+		return nil unless website.ga_profile_id.present?
 		points = []
 		get_google_analytics_data(website).points.each do |data_point|
   		date = Time.parse(data_point.dimensions.first[:date]).to_f*1000
@@ -97,13 +97,16 @@ module ApplicationHelper
 	end
 
 	def get_pageviews_by_day(website)
-		return nil unless website.ga_profile_id
+		return nil unless website.ga_profile_id.present?
 		points = []
-		get_google_analytics_data(website).points.each do |data_point|
-  		date = Time.parse(data_point.dimensions.first[:date]).to_f*1000
-  		pageviews = data_point.metrics[1][:pageviews]
-  		points.push([date, pageviews])
-		end
+    data = get_google_analytics_data(website)
+    if data
+  		data.points.each do |data_point|
+    		date = Time.parse(data_point.dimensions.first[:date]).to_f*1000
+    		pageviews = data_point.metrics[1][:pageviews]
+    		points.push([date, pageviews])
+  		end
+    end
 		points
 	end
 

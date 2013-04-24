@@ -9,19 +9,19 @@
 clients = Client.create!([
 	{ :name => 'Starbucks Coffee Company', :description=> 'Hi there', :harvest_client_id => 1, :logo_url => '/icons/Starbucks.gif', :web_sites_attributes => [
 		{ :url => 'http://demo.cafepractices.info'}, 
-		{ :url => 'http://cafepractices.info'}
+		{ :url => 'http://cafepractices.info', :git_path => 'greenriver/starbucks-vrs', :ga_profile_id=> '13278666'}
 		]
 	}, 
 	{ :name => 'Education Resource Strategies', :logo_url => '/icons/ERS.png', :web_sites_attributes => [
+		{ :url => 'http://www.erstools.org/dream', :ga_profile_id => '3599892', :git_path => 'greenriver/ers-dream'}, 
 		{ :url => 'http://www.system2020.org/', :ga_profile_id => '68926892'}, 
-		{ :url => 'http://www.erstools.org/dream', :ga_profile_id => '3599892'}, 
 		{ :url => 'http://www.erstools.org/hold-em', :ga_profile_id => '52525252'}, 
 		{ :url => 'http://www.erstools.org/assessments/resource_check'}
 		]
 	}, 
 	{ :name => "The Author's Guild", :logo_url => "/icons/Author's Guild.png", :web_sites_attributes => [
-		{ :url => 'http://www.authorsguild.org'}, 
-		{ :url => 'http://www.authorsguild.net', :ga_profile_id => '18717496'}
+		{ :url => 'http://www.authorsguild.org', :git_path => 'greenriver/ag-dotorg'}, 
+		{ :url => 'http://www.authorsguild.net', :ga_profile_id => '18717496', :git_path => 'greenriver/ag-sitebuilder'}
 		]
 	}, 
 	{ :name => 'Noveda Technologies', :logo_url => '/icons/Noveda.png', :web_sites_attributes => [
@@ -33,14 +33,14 @@ clients = Client.create!([
 		]
 	}, 
 	{ :name => 'CADH', :logo_url => '/icons/CADH.png', :web_sites_attributes => [
-		{ :url => 'http://index.healthequityalliance.us', :ga_profile_id => '36974232'},
+		{ :url => 'http://index.healthequityalliance.us', :ga_profile_id => '36974232', :git_path => 'greenriver/cadh-hei'},
     	{ :url => 'http://www.sdoh.org', :ga_profile_id => '70151662'}
 		]
 	}, { :name => 'Timeslips', :logo_url => '/icons/TimeSlips.png', :web_sites_attributes => [
 		{ :url => 'http://www.timeslips.org'}
 		]
 	}, { :name => 'USGBC', :logo_url => '/icons/USGBC.png', :web_sites_attributes => [
-		{ :url => 'http://www.gbig.org', :ga_profile_id => '59704014', :git_path => 'usgbc-gbig',}
+		{ :url => 'http://www.gbig.org', :ga_profile_id => '59704014', :git_path => 'greenriver/usgbc-gbig'}
     ]
 	}, { :name => 'FCA', :logo_url => '/icons/FCA.jpeg', :web_sites_attributes => [
 		{ :url => 'http://www.foundationforcontemporaryarts.org'}
@@ -52,7 +52,7 @@ clients = Client.create!([
 		{ :url => 'http://www.etips.info'}
 		]
 	}, { :name => 'Kidz Central Station, LLC', :logo_url => '/icons/KCS.png', :web_sites_attributes => [
-		{ :url => 'https://www.kidzcentralstation.com', :ga_profile_id => '62151399'}
+		{ :url => 'https://www.kidzcentralstation.com', :ga_profile_id => '62151399', :git_path => 'greenriver/kcs'}
     ]
 	}, { :name => 'VT Midi project', :logo_url => '/icons/VT.gif', :web_sites_attributes => [
 		{ :url => 'http://www.vtmidi.org'}
@@ -61,10 +61,10 @@ clients = Client.create!([
 		{ :url => 'http://www.sai-learningforward.org'}
 		]
 	}, { :name => 'Yorkville Sports Association', :logo_url => '/icons/YSA.png', :web_sites_attributes => [
-		{ :url => 'https://members.ysaleagues.com'}
+		{ :url => 'https://members.ysaleagues.com', :git_path => 'greenriver/ysa-ysaleagues'}
 		]
 	}, { :name => 'NEA', :logo_url => '/icons/NEA.gif', :web_sites_attributes => [
-		{ :url => 'http://www.keysonline.org'}
+		{ :url => 'http://www.keysonline.org', :git_path => 'greenriver/nea-keys'}
 		]
 	}, { :name => 'BuildingGreen', :logo_url => '/icons/bg.png', :web_sites_attributes => [
 		{ :url => 'http://www.buildinggreen.com'}
