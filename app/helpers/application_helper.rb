@@ -26,7 +26,7 @@ module ApplicationHelper
 				deployment_list.append(deployment['ref'].scan(/\d{2,}/).first)
 			end
 		end
-		return deployment_list.sort[-5..-1].reverse
+		return deployment_list.sort[-6..-1].reverse
 	end
 
   def get_git_deployments(site)

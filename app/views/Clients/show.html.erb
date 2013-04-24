@@ -80,10 +80,17 @@
 						<div>
 							<ol>
 								<% if website.git_path %>
-									<% list_deployments(website).each do |deployment| %>
-										<li><a href='https://github.com/greenriver/usgbc-gbig/tree/production_<%= deployment %>'>
-										<%= time_ago_in_words(Time.parse(deployment)) %> ago, on 
-										<%= Time.parse(deployment).to_date %></a></li>
+									<% deployments = list_deployments(website) %>
+									<% (0..4).each do |i| %>
+										<% if deployments[i] %>
+											<% if deployments[i+1] %>
+												<li><a href='https://github.com/greenriver/<%= website.git_path %>/compare/production_<%= deployments[i] %>...production_<%= deployments[i+1] %>'>
+											<% else %>
+												<li><a href='https://github.com/greenriver/<%= website.git_path %>/tree/production_<%= deployments[i] %>'>
+											<% end %>
+											<%= time_ago_in_words(Time.parse(deployments[i])) %> ago, on 
+											<%= Time.parse(deployments[i]).to_date %></a></li>
+										<% end %>
 									<% end %>
 								<% else %>
 									<p>no Github path found</p>
