@@ -52,8 +52,7 @@ module ApplicationHelper
   end
 
 	def retrieve_performance_data
-		return nil
-    Rails.cache.fetch('performance_data', :expires_in => 1.minute) do
+		Rails.cache.fetch('performance_data', :expires_in => 1.minute) do
 			starting_at = 3.hours.ago
 			performance_data = Hash.new
 	    open("https://nagios.greenriver.com/perfdata.log", nagios_options).each do |line|
@@ -93,7 +92,9 @@ module ApplicationHelper
   	    :metrics      => ['visitors', 'pageviews'],
 			})
 		end
-	end
+	rescue
+    nil
+  end
 
 	def get_visitors_by_day(website)
 		points = []
