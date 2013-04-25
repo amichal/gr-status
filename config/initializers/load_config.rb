@@ -13,6 +13,7 @@ APP_CONFIG = {
 }
 begin 
    config = YAML.load_file("#{Rails.root}/config/config.yml")[Rails.env]
-   APP_CONFIG.merge
+   APP_CONFIG.deep_merge! config
 rescue  
 end
+Rails.logger.warn APP_CONFIG

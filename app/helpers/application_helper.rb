@@ -3,18 +3,19 @@ require 'htmlentities'
 
 module ApplicationHelper
 	def find_performance_data(website, attribute)
-		@performance_data ||= retrieve_performance_data
-    stuff = @performance_data.detect do |data|
-      data.first == website.url or data.first == website.host
-    end
-    if stuff
-      stuff.last[attribute]
+		if @performance_data ||= retrieve_performance_data
+      stuff = @performance_data.detect do |data|
+        data.first == website.url or data.first == website.host
+      end
+      if stuff
+        stuff.last[attribute]
+      end
     end
 	end
 
 	def find_status(website)
     @status_data ||= retrieve_status_data
-    return nil unless @status_data['services']
+    return nil unless @status_data and @status_data['services']
   	@status_data['services'].detect do |service|
   		service['service_description'] == website.url or service['service_description'] == website.host
   	end
@@ -47,11 +48,12 @@ module ApplicationHelper
 		nagios_options)
 		return JSON.parse(data_file.read)
 	rescue
-    {}
+    nil
   end
 
 	def retrieve_performance_data
-		Rails.cache.fetch('performance_data', :expires_in => 1.minute) do
+		return nil
+    Rails.cache.fetch('performance_data', :expires_in => 1.minute) do
 			starting_at = 3.hours.ago
 			performance_data = Hash.new
 	    open("https://nagios.greenriver.com/perfdata.log", nagios_options).each do |line|
@@ -69,11 +71,11 @@ module ApplicationHelper
 	    performance_data
 	  end
   rescue
-    {}
+    nil
 	end
 
 	def get_google_analytics_data(website)
-		return nil unless website.ga_profile_id
+		return nil unless website.ga_profile_id.present?
 		Rails.cache.fetch("#{website.ga_profile_id}_data", :expires_in => 1.hour) do
 			ga = Gattica.new(
 				APP_CONFIG['google_analytics'].symbolize_keys.merge(
@@ -85,21 +87,17 @@ module ApplicationHelper
 			return nil unless this_account
 			ga.profile_id = this_account.profile_id
 			data = ga.get({ 
-	    :start_date   => 3.months.ago.to_s.scan(/\d+-\d+-\d+/)[0],
-	    :end_date     => 1.day.ago.to_s.scan(/\d+-\d+-\d+/)[0],
-	    :dimensions   => ['date'],
-	    :metrics      => ['visitors', 'pageviews'],
+  	    :start_date   => 3.months.ago.to_s.scan(/\d+-\d+-\d+/)[0],
+  	    :end_date     => 1.day.ago.to_s.scan(/\d+-\d+-\d+/)[0],
+  	    :dimensions   => ['date'],
+  	    :metrics      => ['visitors', 'pageviews'],
 			})
 		end
-	rescue
-    nil
-  end
+	end
 
 	def get_visitors_by_day(website)
-		return nil unless website.ga_profile_id.present?
 		points = []
-		
-    if data = get_google_analytics_data(website)
+		if data = get_google_analytics_data(website)
       get_google_analytics_data(website).points.each do |data_point|
     		date = Time.parse(data_point.dimensions.first[:date]).to_f*1000
     		visitors = data_point.metrics[0][:visitors]
@@ -110,7 +108,6 @@ module ApplicationHelper
 	end
 
 	def get_pageviews_by_day(website)
-		return nil unless website.ga_profile_id.present?
 		points = []
     if data = get_google_analytics_data(website)
   		data.points.each do |data_point|
