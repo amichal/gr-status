@@ -6,6 +6,9 @@ GrStatus::Application.routes.draw do
   match 'signout', to: 'sessions#destroy', as: 'signout'
   resources :clients, :web_sites
 
+  namespace :admin do
+    resources :clients
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
