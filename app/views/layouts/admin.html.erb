@@ -14,7 +14,7 @@
       Signed in as <%= current_user.name %>
       <%= link_to "Sign out", signout_path %>
     <% else %>
-      <%= link_to "sign in with Google Apps", "/auth/google_apps" %>
+      <%= link_to "sign in with Google Apps", sign_in_path %>
     <% end %>
   </div>
 

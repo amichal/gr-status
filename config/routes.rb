@@ -1,7 +1,7 @@
 GrStatus::Application.routes.draw do
   match '/', to: redirect('/dashboard')
   match 'dashboard' => 'dashboard#index'
-  match 'auth/:provider/callback', to: 'sessions#create'
+  match 'auth/:provider/callback', to: 'sessions#create', :as => :login
   match 'auth/failure', to: redirect('/')
   match 'signout', to: 'sessions#destroy', as: 'signout'
   resources :clients, :web_sites
