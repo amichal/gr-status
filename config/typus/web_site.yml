@@ -1,8 +1,0 @@
-# Use the README file as a reference to customize settings.
-
-WebSite:
-  fields:
-    default: url, client_id, ga_profile_id, git_path
-    form: url, client_id, ga_profile_id, git_path
-  relationships: 
-  application: Application
