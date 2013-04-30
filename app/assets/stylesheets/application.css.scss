@@ -19,6 +19,7 @@ $navbarBackground: $grBlue;
 .login a{color: $lightGray;}
 
 @import "bootstrap";
+@import "bootstrap-responsive";
 
 /* boostrap overrides */
 .breadcrumb {
@@ -52,6 +53,7 @@ $navbarBackground: $grBlue;
 
 .client_small{
 	height: 148px;
+	min-width: 300px;
 }
 
 .webline{
