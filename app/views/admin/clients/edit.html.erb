@@ -12,7 +12,13 @@
       </div>
       <div class='span4'>
         <%= sf.input :git_path %>
-      </div>  
+      </div>
+      <% if !sf.object.new_record? %>
+        <div>
+          <%= sf.check_box :_destroy %>
+          <%= sf.label :_destroy, "Remove Website" %>
+        </div> 
+      <% end %>
     </div>
   <% end %>
   <%= f.button :submit %>
