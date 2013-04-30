@@ -1,4 +1,5 @@
 source 'http://rubygems.org'
+ruby "1.9.3"
 
 gem 'rails', '3.2.12'
 gem 'pg'
@@ -15,6 +16,8 @@ gem 'simple_form'
 gem 'gattica', :git => 'git://github.com/chrisle/gattica.git'
 gem 'octokit'
 gem 'omniauth-google-apps'
+
+gem 'unicorn'
 
 group :assets do
   gem 'coffee-rails'
