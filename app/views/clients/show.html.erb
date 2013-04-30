@@ -5,15 +5,6 @@
 <div class='logo'><img width='80' src="<%= @client.logo_url %>"></div>
 <h1><%= @client.name %></h1>
 <p><%= @client.description %></p>
-<!-- This section was the additional data stuff, which we don't actually have data for yet.
-<div class='container-fluid'>
-	<div class='row-fluid'>
-		<div class='span4'><p><strong>Hours Worked</strong>: <%= @client.hours %></p></div>
-		<div class='span4'><p><strong>Issues resolved</strong>: <%= @client.hours/2 %></p></div>
-		<div class='span4'><p><strong>Sandwiches eaten</strong>: <%= @client.hours/4 %></p></div>
-	</div>
-</div>
--->
 <div class='container-fluid'>
 	<% @client.web_sites.all.each_slice(1) do |websites|%>
 		<% websites.each do |website| %>
