@@ -4,3 +4,12 @@
   <%= f.input :description, as: :text %>
   <%= f.button :submit %>
 <% end %>
+
+<% @client.web_sites.each do |website|%>
+  <%= simple_form_for website do |f| %>
+    <%= f.input :url %>
+    <%= f.input :ga_profile_id %>
+    <%= f.input :git_path %>
+    <%= f.button :submit %>
+  <% end %>
+<% end %>
