@@ -5,16 +5,18 @@ gem 'pg'
 gem 'json'
 gem 'jquery-rails'
 gem 'haml-rails'
+gem 'sass-rails', '~> 3.2'
+gem 'bootstrap-sass', '~> 2.3.1.0'
+
 gem 'kaminari'
 gem 'htmlentities'
-gem 'harvested'
 gem 'simple_form'
+
 gem 'gattica', :git => 'git://github.com/chrisle/gattica.git'
 gem 'octokit'
 gem 'omniauth-google-apps'
 
 group :assets do
-  gem 'sass-rails'
   gem 'coffee-rails'
   gem 'uglifier'
 end
