@@ -2,10 +2,7 @@
 <html>
 <head>
   <title>Admin</title>
-  <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-  <link href="/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
-  <%= csrf_meta_tags %>
-  <script src="/bootstrap/js/bootstrap.min.js"></script>
+  <%= render :partial=>'/layouts/head' %>
 </head>
 <body>
   <div class="login">
@@ -16,10 +13,8 @@
       <%= link_to "sign in with Google Apps", sign_in_path %>
     <% end %>
   </div>
-
   <div class="container">
     <%= yield %>
   </div>
-
 </body>
 </html>

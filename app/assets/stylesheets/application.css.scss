@@ -1,18 +1,35 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the top of the
- * compiled file, but it's generally better to create a new file per style scope.
- *
- *= require_self
- *= require_tree .
- */
-body{
-	background-color: #ffffff
+$grBlue: #1E407D;
+$darkGray: #333;
+$lightGray: #CCC;
+$darkBrown: #5F544C;
+$red: #FF1E00;
+$green: #64984F;
+$footerBackground: #4F5E67;
+$primaryButtonBackground: #f00;
+$bodyBackground: #FAF7F2;
+$navColor: #807D6D;
+$navbarLinkColor: #817D6C;
+
+$sansFontFamily: "proxima-nova-extra-condensed",sans-serif;
+$serifFontFamily: 'rooney-web';
+$baseFontSize: 18px;
+$baseLineHeight: 24px;
+$navbarBackground: $grBlue;
+
+.login a{color: $lightGray;}
+
+@import "bootstrap";
+
+/* boostrap overrides */
+.breadcrumb {
+	background-color: $navColor;
+	color: $white;
+	> li {
+		text-shadow: none;
+		a {
+			color: inherit;
+		}
+	}	
 }
 
 .header{
@@ -29,7 +46,6 @@ body{
 }
 
 .showoff{
-	background-color: #ffffff;
 	margin: 10px;
 	padding: 3px;
 }
@@ -48,10 +64,6 @@ body{
 	overflow: auto;
 	max-height: 132px;
 }
-
-a:link{color: #000000}
-a:visited{color: #000000}
-a:hover{color: #990000}
 
 a.client_title:link{color: #000099}
 a.client_title:visited{color: #000055}
@@ -92,7 +104,6 @@ h1{
 }
 
 .login{
+	color: $darkGray;
 	float: right;
 }
-
-.login a{color: #999999;}
