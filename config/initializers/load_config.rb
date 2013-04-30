@@ -16,4 +16,3 @@ begin
    APP_CONFIG.deep_merge! config
 rescue  
 end
-Rails.logger.warn APP_CONFIG

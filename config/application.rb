@@ -14,9 +14,10 @@ if defined?(Bundler)
   # If you want your assets lazily compiled in production, use this line
   # Bundler.require(:default, :assets, Rails.env)
 end
-
 module GrStatus
   class Application < Rails::Application
+    config.middleware.insert_before ActionDispatch::Static, Rack::Deflater
+
     config.time_zone = 'Eastern Time (US & Canada)'
     
     # Configure the default encoding used in templates for Ruby 1.9.

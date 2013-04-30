@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 ruby "1.9.3"
 
-gem 'rails', '3.2.12'
+gem 'rails', '~> 3.2.12'
 gem 'pg'
 gem 'json'
 gem 'jquery-rails'
@@ -18,6 +18,10 @@ gem 'octokit'
 gem 'omniauth-google-apps'
 
 gem 'unicorn'
+
+group :production do
+  gem 'dalli'
+end
 
 group :assets do
   gem 'coffee-rails'
