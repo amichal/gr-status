@@ -5,5 +5,6 @@ class Client < ActiveRecord::Base
 
   has_many :web_sites, :dependent=>:destroy, :inverse_of=>:client
 
-  accepts_nested_attributes_for :web_sites
+  accepts_nested_attributes_for :web_sites, 
+    :reject_if => proc { |attributes| attributes['url'].blank? }
 end

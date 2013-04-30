@@ -1,15 +1,19 @@
-<%= simple_form_for @client do |f| %>
+<%= simple_form_for [:admin, @client] do |f| %>
   <%= f.input :name %>
   <%= f.input :logo_url %>
   <%= f.input :description, as: :text %>
-  <%= f.button :submit %>
-<% end %>
-
-<% @client.web_sites.each do |website|%>
-  <%= simple_form_for website do |f| %>
-    <%= f.input :url %>
-    <%= f.input :ga_profile_id %>
-    <%= f.input :git_path %>
-    <%= f.button :submit %>
+  <%= f.simple_fields_for :web_sites do |sf| %>
+    <div class='row'>
+      <div class='span4'>
+        <%= sf.input :url %>
+      </div>
+      <div class='span4'>
+        <%= sf.input :ga_profile_id %>
+      </div>
+      <div class='span4'>
+        <%= sf.input :git_path %>
+      </div>  
+    </div>
   <% end %>
+  <%= f.button :submit %>
 <% end %>
