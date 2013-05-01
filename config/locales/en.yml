@@ -7,4 +7,6 @@ en:
       user: "Dude"
     attributes:
       web_site:
-        url: "The link dude"
+        url: "Web Site Url"
+        ga_profile_id: "Google Analytics Profile ID"
+        git_path: "Github Repository Path"

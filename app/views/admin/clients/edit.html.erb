@@ -1,25 +1,33 @@
 <%= simple_form_for [:admin, @client] do |f| %>
-  <%= f.input :name %>
-  <%= f.input :logo_url %>
-  <%= f.input :description, as: :text %>
-  <%= f.simple_fields_for :web_sites do |sf| %>
-    <div class='row'>
-      <div class='span4'>
-        <%= sf.input :url %>
-      </div>
-      <div class='span4'>
-        <%= sf.input :ga_profile_id %>
-      </div>
-      <div class='span4'>
-        <%= sf.input :git_path %>
-      </div>
-      <% if !sf.object.new_record? %>
-        <div>
-          <%= sf.check_box :_destroy %>
-          <%= sf.label :_destroy, "Remove Website" %>
-        </div> 
-      <% end %>
+  <div class='row client_edit'>
+    <div class='span3'>
+      <%= f.input :name %>
     </div>
-  <% end %>
-  <%= f.button :submit %>
+    <div class='span3'>
+      <%= f.input :logo_url %>
+    </div>
+    <div class='span6'>
+      <%= f.input :description, as: :text %>
+    </div>
+    <%= f.simple_fields_for :web_sites do |sf| %>
+      <div class='row website_edit'>
+        <div class='span3'>
+          <%= sf.input :url %>
+        </div>
+        <div class='span3'>
+          <%= sf.input :ga_profile_id %>
+        </div>
+        <div class='span3'>
+          <%= sf.input :git_path %>
+        </div>
+        <% if !sf.object.new_record? %>
+          <div>
+            <%= sf.check_box :_destroy %>
+            <%= sf.label :_destroy, "Remove Website" %>
+          </div> 
+        <% end %>
+      </div>
+    <% end %>
+    <%= f.button :submit %>
+  </div>
 <% end %>
