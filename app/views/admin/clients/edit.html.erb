@@ -25,6 +25,10 @@
             <%= sf.check_box :_destroy %>
             <%= sf.label :_destroy, "Remove Website" %>
           </div> 
+        <% else %>
+          <div>
+            <p>Fill this in to add a new website to this client</p>
+          </div>
         <% end %>
       </div>
     <% end %>
