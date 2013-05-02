@@ -8,15 +8,15 @@
 <body>
   <div class='container-fluid'>
     <div class="login">
-        <% if current_user%>
-          Signed in as <%= current_user.name %>
-          <%= link_to "Sign out", signout_path %>
-        <% else %>
-          <%= link_to "sign in with Google Apps", sign_in_path %>
-        <% end %>
+      <% if current_user%>
+        Signed in as <%= current_user.name %>
+        <%= link_to "Sign out", set_return_to_here(signout_path) %>
+      <% else %>
+        <%= link_to "sign in with Google Apps", set_return_to_here(sign_in_path) %>
+      <% end %>
     </div>
     <div class='row-fluid'>
-        <%= yield %>
+      <%= yield %>
     </div>
   </div>
 <!-- This is the javascript for the Highcharts stuff -->
