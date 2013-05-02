@@ -2,6 +2,16 @@ require 'open-uri'
 require 'htmlentities'
 
 module ApplicationHelper
+  def get_ga_profile_id_list
+    ga = Gattica.new(APP_CONFIG['google_analytics'].symbolize_keys)
+    ga.accounts
+    #id_list = []
+    #ga.accounts.each do |account|
+    #  id_list.append("#{account.account_name}, #{account.title}" => account.profile_id)
+    #end
+    #id_list
+  end
+
   def set_return_to_here(destination)
     cookies[:return_to] = request.url
     return destination
