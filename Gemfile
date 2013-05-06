@@ -12,6 +12,7 @@ gem 'bootstrap-sass', '~> 2.3.1.0'
 gem 'kaminari'
 gem 'htmlentities'
 gem 'simple_form'
+gem 'select2-rails'
 
 gem 'gattica', :git => 'git://github.com/chrisle/gattica.git'
 gem 'octokit'

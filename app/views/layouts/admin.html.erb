@@ -16,5 +16,12 @@
   <div class="container">
     <%= yield %>
   </div>
+  <% if jquery = yield(:jquery) %>
+    <script type='text/javascript'>
+      jQuery(function($){
+        <%= jquery %>
+      });
+    </script>
+  <% end %>
 </body>
 </html>
