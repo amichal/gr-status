@@ -74,7 +74,7 @@ module ApplicationHelper
 
   def retrieve_performance_data
     logger.debug "Start retrieve_performance_data, #{Time.now}"
-    Rails.cache.fetch('performance_data', :expires_in => 1.minute) do
+    Rails.cache.fetch('performance_data', :expires_in => 15.minutes) do
       logger.debug "Start Cache (performance_data), #{Time.now}"
       starting_at = 3.hours.ago
       performance_data = Hash.new

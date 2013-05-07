@@ -14,14 +14,14 @@
   <%= f.simple_fields_for :web_sites do |sf| %>
     <div class='row website_edit'>
       <div class='span3'>
-        <%= sf.input :url %>
+        <%= sf.input :url, :class => "form_field" %>
       </div>
       <div class='span3'>
-        <%= sf.input :ga_profile_id, :as => :select2, :input_html => {:id => "ga_#{sf.object.id}", :class=>"span3"}, :select2 => {:ajax=>{:url=>admin_google_analytics_path(:format=>'json'), :init_url => "/admin/google_analytics/"}} %>
+        <%= sf.input :ga_profile_id, :as => :select2, :input_html => {:id => "ga_#{sf.object.id}", :class => "form_field"}, :select2 => {:ajax=>{:url=>admin_google_analytics_path(:format=>'json'), :init_url => "/admin/google_analytics/"}} %>
         <%#= sf.input :ga_profile_id, collection: get_ga_profile_id_list, :label_method => :title , :value_mathod => :profile_id %>
       </div>
       <div class='span3'>
-        <%= sf.input :git_path, :as => :select2, :input_html => {:id => "git_#{sf.object.id}", :class=>"span3"}, :select2 => {:ajax=>{:url=>admin_github_index_path(:format=>'json'), :init_url => "/admin/github/"}} %>
+        <%= sf.input :git_path, :as => :select2, :input_html => {:id => "git_#{sf.object.id}", :class => "form_field"}, :select2 => {:ajax=>{:url=>admin_github_index_path(:format=>'json'), :init_url => "/admin/github/"}} %>
         <%#= sf.input :git_path %>
       </div>
       <% if !sf.object.new_record? %>
