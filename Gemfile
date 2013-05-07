@@ -29,8 +29,10 @@ group :assets do
   gem 'uglifier'
 end
 
-group :test do
-  gem 'rspec-rails'
+group :development, :test do
+  gem 'ruby-prof'
+  gem 'test-unit'
+  #gem 'rspec-rails'
 end
 
 group :development do
