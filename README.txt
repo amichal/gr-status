@@ -1,0 +1,1 @@
+This rails project is designed to create a dashboard which keeps track of websites being managed by a company (initially, Greenriver.org).  This implementation makes use of a number of services as data sources, specifically Nagios, Google Analytics, and Github.

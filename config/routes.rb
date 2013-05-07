@@ -8,7 +8,10 @@ GrStatus::Application.routes.draw do
 
   namespace :admin do
     resources :clients
+    resources :google_analytics, :only => [:index, :show], :defaults => {:format => 'json'}, :constraints => {:format => 'json'}
+    resources :github, :only => [:index], :defaults => {:format => 'json'}, :constraints => {:format => 'json'}
   end
+  match 'admin/github/*id' => 'admin/github#show'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -20,6 +20,7 @@ $navbarBackground: $grBlue;
 
 @import "bootstrap";
 @import "bootstrap-responsive";
+@import "select2";
 
 /* boostrap overrides */
 .breadcrumb {
@@ -33,10 +34,11 @@ $navbarBackground: $grBlue;
 	}	
 }
 
-.header{
+.gr_logo{
 	margin-left: 5px;
 	margin-top: 5px;
 	margin-bottom: 10px;
+	width: 150px;
 }
 
 .bordered{
@@ -108,6 +110,7 @@ h1{
 .login{
 	color: $darkGray;
 	float: right;
+	margin-right: 10px;
 }
 
 .client_edit{
@@ -116,6 +119,9 @@ h1{
 
 .website_edit{
 	border-bottom: 1px solid $darkGray;
-	margin: 10px;
 	padding-top: 5px;
+}
+
+.form_field{
+	width: 250px;
 }

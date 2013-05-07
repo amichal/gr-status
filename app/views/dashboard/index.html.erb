@@ -1,4 +1,4 @@
-<div class="header">
+<div class="gr_logo">
 	<img src="icons/gr_logo.png">
 </div>
 <div class="container-fluid">		
@@ -40,7 +40,7 @@
 											<% time_match = /([.0-9]+) second/.match(status_output) %>
 											<span class="label label-success"><%= status['service_status'] %> - <%= (time_match[1].to_f*1000).to_i %>ms</span>
 										<% elsif /CRITICAL/.match(status['service_status'])%>
-											<span class="label label-important"><%= status['service_status'] %></span>
+											<span class="label label-important"><%= status['service_status'] %> for <%= status['service_state_duration'] %></span>
 										<% else %>
 											<span class="label label-default"><%= status['service_status'] %></span>
 										<% end %>

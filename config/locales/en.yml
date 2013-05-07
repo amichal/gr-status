@@ -6,6 +6,10 @@ en:
     models:
       user: "Dude"
     attributes:
+      client:
+        name: "Client Name"
+        logo_url: "Client Logo Url"
+        description: "Client Description"
       web_site:
         url: "Web Site Url"
         ga_profile_id: "Google Analytics Profile ID"

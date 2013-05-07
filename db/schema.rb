@@ -11,14 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130424172319) do
+ActiveRecord::Schema.define(:version => 20130501193415) do
 
   create_table "clients", :force => true do |t|
     t.string   "name",              :null => false
     t.string   "logo_url"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
-    t.string   "description"
+    t.text     "description"
     t.string   "harvest_client_id"
   end
 

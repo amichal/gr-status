@@ -2,13 +2,30 @@ require 'open-uri'
 require 'htmlentities'
 
 module ApplicationHelper
+  def get_ga_profile_id_list
+    ga = Gattica.new(APP_CONFIG['google_analytics'].symbolize_keys)
+    ga.accounts
+    #id_list = []
+    #ga.accounts.each do |account|
+    #  id_list.append("#{account.account_name}, #{account.title}" => account.profile_id)
+    #end
+    #id_list
+  end
+
+  def set_return_to_here(destination)
+    cookies[:return_to] = request.url
+    return destination
+  end
+
   def find_performance_data(website, attribute)
+    logger.debug "Start find_performance_data, #{Time.now}"
     if @performance_data ||= retrieve_performance_data
       stuff = @performance_data.detect do |data|
         data.first == website.url or data.first == website.host
       end
       if stuff
-        stuff.last[attribute]
+       logger.debug "End find_performance_data, #{Time.now}"
+       stuff.last[attribute]
       end
     end
   end
@@ -33,7 +50,9 @@ module ApplicationHelper
   end
 
   def get_git_deployments(repo_path)
+    logger.debug "Start get_git_deployments, #{Time.now}"
     client = Octokit::Client.new(APP_CONFIG['github'].symbolize_keys)
+    logger.debug "End get_git_deployments, #{Time.now}"
     client.refs(repo_path, 'tags')
   rescue
     []
@@ -44,15 +63,19 @@ module ApplicationHelper
   end
 
   def retrieve_status_data
+    logger.debug "Start retrieve_status_data, #{Time.now}"
     data_file = open("https://nagios.greenriver.com/cgi-bin/nagios3/status-json.cgi",
     nagios_options)
+    logger.debug "End retrieve_status_data, #{Time.now}"
     return JSON.parse(data_file.read)
   rescue
     nil
   end
 
   def retrieve_performance_data
-    Rails.cache.fetch('performance_data', :expires_in => 1.minute) do
+    logger.debug "Start retrieve_performance_data, #{Time.now}"
+    Rails.cache.fetch('performance_data', :expires_in => 15.minutes) do
+      logger.debug "Start Cache (performance_data), #{Time.now}"
       starting_at = 3.hours.ago
       performance_data = Hash.new
       open("https://nagios.greenriver.com/perfdata.log", nagios_options).each do |line|
@@ -67,6 +90,7 @@ module ApplicationHelper
           end
         end
       end
+      logger.debug "End retrieve_performance_data, #{Time.now}"
       performance_data
     end
   rescue
@@ -74,8 +98,10 @@ module ApplicationHelper
   end
 
   def get_google_analytics_data(website)
+    logger.debug "Start get_google_analytics_data, #{Time.now}"
     return nil unless website.ga_profile_id.present?
     Rails.cache.fetch("#{website.ga_profile_id}_data", :expires_in => 1.hour) do
+      logger.debug "Start Cache (google_analytics_data), #{Time.now}"
       ga = Gattica.new(
         APP_CONFIG['google_analytics'].symbolize_keys.merge(
         :profile_id => website.ga_profile_id
@@ -85,6 +111,7 @@ module ApplicationHelper
       end
       return nil unless this_account
       ga.profile_id = this_account.profile_id
+      logger.debug "End get_google_analytics_data, #{Time.now}"
       data = ga.get({ 
         :start_date   => 3.months.ago.to_s.scan(/\d+-\d+-\d+/)[0],
         :end_date     => 1.day.ago.to_s.scan(/\d+-\d+-\d+/)[0],
@@ -97,6 +124,7 @@ module ApplicationHelper
   end
 
   def get_visitors_by_day(website)
+    logger.debug "Start get_visitors_by_day, #{Time.now}"
     points = []
     if data = get_google_analytics_data(website)
       get_google_analytics_data(website).points.each do |data_point|
@@ -105,10 +133,12 @@ module ApplicationHelper
         points.push([date, visitors])
       end
     end
+    logger.debug "End get_visitors_by_day, #{Time.now}"
     points
   end
 
   def get_pageviews_by_day(website)
+    logger.debug "Start get_pageviews_by_day, #{Time.now}"
     points = []
     if data = get_google_analytics_data(website)
       data.points.each do |data_point|
@@ -117,6 +147,7 @@ module ApplicationHelper
         points.push([date, pageviews])
       end
     end
+    logger.debug "End get_pageviews_by_day, #{Time.now}"
     points
   end
 

@@ -1,37 +1,44 @@
+<h2>Client Edit Form</h2>
 <%= simple_form_for [:admin, @client] do |f| %>
   <div class='row client_edit'>
-    <div class='span3'>
+    <div class='span4'>
       <%= f.input :name %>
-    </div>
-    <div class='span3'>
+      <br>
       <%= f.input :logo_url %>
     </div>
-    <div class='span6'>
-      <%= f.input :description, as: :text %>
+    <div class='span8'>
+      <%= f.input :description, as: :text, :input_html => { :rows => 6 } %>
     </div>
-    <%= f.simple_fields_for :web_sites do |sf| %>
-      <div class='row website_edit'>
-        <div class='span3'>
-          <%= sf.input :url %>
-        </div>
-        <div class='span3'>
-          <%= sf.input :ga_profile_id %>
-        </div>
-        <div class='span3'>
-          <%= sf.input :git_path %>
-        </div>
-        <% if !sf.object.new_record? %>
-          <div>
-            <%= sf.check_box :_destroy %>
-            <%= sf.label :_destroy, "Remove Website" %>
-          </div> 
-        <% else %>
-          <div>
-            <p>Fill this in to add a new website to this client</p>
-          </div>
-        <% end %>
+  </div>
+  <h3>Websites listed for this client</h3>
+  <%= f.simple_fields_for :web_sites do |sf| %>
+    <div class='row website_edit'>
+      <div class='span3'>
+        <%= sf.input :url, :class => "form_field" %>
       </div>
-    <% end %>
-    <%= f.button :submit %>
+      <div class='span3'>
+        <%= sf.input :ga_profile_id, :as => :select2, :input_html => {:id => "ga_#{sf.object.id}", :class => "form_field"}, :select2 => {:ajax=>{:url=>admin_google_analytics_path(:format=>'json'), :init_url => "/admin/google_analytics/"}} %>
+        <%#= sf.input :ga_profile_id, collection: get_ga_profile_id_list, :label_method => :title , :value_mathod => :profile_id %>
+      </div>
+      <div class='span3'>
+        <%= sf.input :git_path, :as => :select2, :input_html => {:id => "git_#{sf.object.id}", :class => "form_field"}, :select2 => {:ajax=>{:url=>admin_github_index_path(:format=>'json'), :init_url => "/admin/github/"}} %>
+        <%#= sf.input :git_path %>
+      </div>
+      <% if !sf.object.new_record? %>
+        <div>
+          <%= sf.check_box :_destroy %>
+          <%= sf.label :_destroy, "Remove Website" %>
+        </div> 
+      <% else %>
+        <div>
+          <p>Fill this in to add a new website to this client</p>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+  <div class='row'>
+    <div class='span12'>
+      <%= f.button :submit %>
+    </div>
   </div>
 <% end %>
