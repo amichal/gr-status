@@ -5,10 +5,10 @@ class WebSite < ActiveRecord::Base
   belongs_to :client, :inverse_of=>:web_sites
 
   def host
-    URI.parse(self.url).host
+    @host ||= URI.parse(self.url).host
   end
 
   def path
-    URI.parse(self.url).path
+    @path ||= URI.parse(self.url).path
   end
 end

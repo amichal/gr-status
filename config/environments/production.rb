@@ -1,24 +1,29 @@
 GrStatus::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
-
+  
   # Code is not reloaded between requests
   config.cache_classes = true
 
-  # Full error reports are disabled and caching is turned on
-  config.consider_all_requests_local       = false
-  config.action_controller.perform_caching = true
 
-  # use memcache
+  # Full error reports are disabled and caching is turned on
+  config.consider_all_requests_local       = true
+ 
+  # Serve static assets
+  config.serve_static_assets = true
+  config.static_cache_control = "public, max-age=86400"
+
+
+
+  # use memcache for Rails.cache
   config.cache_store = :dalli_store
+  
+  # and for action_dispatch cache
+  config.action_controller.perform_caching = true
   config.action_dispatch.rack_cache = {
     :metastore    => Dalli::Client.new,
     :entitystore  => 'file:tmp/cache/rack/body',
     :allow_reload => false
   }
-
-  # Serve static assets
-  config.serve_static_assets = true
-  config.static_cache_control = "public, max-age=86400"
 
   # compress JavaScripts and CSS
   config.assets.compress = true
