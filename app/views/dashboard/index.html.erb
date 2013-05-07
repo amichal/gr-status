@@ -11,7 +11,7 @@
 					<div class="logo"><img width='80' src="<%= client.logo_url %>"></div>
 					<div class="media-body scrollable">
 						<% client.web_sites.each do |website| %>
-							<% status = false # find_status(website) %>
+							<% status = find_status(website) %>
 							<% up = status && /OK/.match(status['service_status']) %>
 							<!-- These are the websites and their labels -->
 							<div class="row-fluid webline">
