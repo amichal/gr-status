@@ -8,7 +8,7 @@
 			<div class="span6">
 				<div class="media showoff client_small">
 					<b><a class="client_title" href='<%= client_path(client) %>'><%= client.name %></a></b>
-					<div class="logo"><img width='80' src="<%= client.logo_url %>"></div>
+					<div class="client_logo"><img width='80' src="<%= client.logo_url %>"></div>
 					<div class="media-body scrollable">
 						<% client.web_sites.each do |website| %>
 							<% status = find_status(website) %>
@@ -40,7 +40,7 @@
 											<% time_match = /([.0-9]+) second/.match(status_output) %>
 											<span class="label label-success"><%= status['service_status'] %> - <%= (time_match[1].to_f*1000).to_i %>ms</span>
 										<% elsif /CRITICAL/.match(status['service_status'])%>
-											<span class="label label-important"><%= status['service_status'] %> for <%= status['service_state_duration'] %></span>
+											<span class="label label-important"><%= status['service_status'] %> for<%= " #{status['service_state_duration']}".gsub(/ 0(d|h|m|s)/, '') %></span>
 										<% else %>
 											<span class="label label-default"><%= status['service_status'] %></span>
 										<% end %>
