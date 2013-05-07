@@ -20,7 +20,7 @@
 								</span>
 								<!-- These are the charts created using the smallchart function -->
 								<span class="pull-right">
-									<% if false %>
+									<% if stuff=find_performance_data(website, 'time') %>
 										<div id="chart_<%= h(website.url) %>" class="smallchart"></div>
 										<script type="text/javascript">
 											$(function () {
