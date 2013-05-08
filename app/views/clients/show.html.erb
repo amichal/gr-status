@@ -16,67 +16,69 @@
 			<div class='website_detail showoff'>
 				<h3><a href='<%= website.url %>'><%= website.url %></a></h3>
 				<div class='row-fluid'>
-					<div class='span3'>
-						<h4 class="chart_title">Response Time</h4>
-						<div class='bigchart' id="rtime_<%= h(website.url) %>">
-							<script type="text/javascript">
-								$(function () {
-									$(document).ready(function() {
-										bigchart("rtime_<%= h(website.url) %>",
-											<% if stuff=find_performance_data(website, 'time') %> 
-											<%= stuff.to_json.html_safe %>
-											<% end %>,
-											'Response Time (seconds)'
-										);
+					<% perf_data = find_performance_data(website, 'time') %> 
+					<% if perf_data.any? %>
+						<div class='span3'>
+							<h4 class="chart_title">Response Time</h4>
+							<div class='bigchart' id="rtime_<%= h(website.url) %>">
+								<script type="text/javascript">
+									$(function () {
+										$(document).ready(function() {
+											bigchart("rtime_<%= h(website.url) %>",
+													<%= perf_data.to_json.html_safe %>,
+												'Response Time (seconds)',
+												'#1E407D'
+											);
+										});
 									});
-								});
-							</script>
+								</script>
+							</div>
 						</div>
-					</div>
-					<div class='span3'>
-						<h4 class="chart_title">Requests per Day</h4>
-						<% if get_pageviews_by_day(website) %>
+					<% end %>
+					<% pgview_data=get_pageviews_by_day(website) %>
+					<% if pgview_data.any? %>
+						<div class='span3'>
+							<h4 class="chart_title">Requests per Day</h4>
 							<div class='bigchart' id="rpm_<%= h(website.url) %>">
 								<script type="text/javascript">
 									$(function () {
 										$(document).ready(function() {
 											bigchart("rpm_<%= h(website.url) %>", 
-												<%= get_pageviews_by_day(website).to_json.html_safe %>,
-												'Views'
+												<%= pgview_data.to_json.html_safe %>,
+												'Views',
+												'#FF1E00'
 											);
 										});
 									});
 								</script>
 							</div>
-						<% else %>
-							<p>no pageview data found</p>
-						<%end %>
-					</div>
-					<div class='span3'>
-						<h4 class="chart_title">Users</h4>
-						<% if get_visitors_by_day(website) %>
+						</div>
+					<% end %>
+					<% visitors = get_visitors_by_day(website) %>
+					<% if visitors.any? %>
+						<div class='span3'>
+							<h4 class="chart_title">Users</h4>
 							<div class='bigchart' id="users_<%= h(website.url) %>">
 								<script type="text/javascript">
 									$(function () {
 										$(document).ready(function() {
 											bigchart("users_<%= h(website.url) %>", 
-												<%= get_visitors_by_day(website).to_json.html_safe %>,
-												'Users'
+												<%= visitors.to_json.html_safe %>,
+												'Users',
+												'#64984F'
 											);
 										});
 									});
 								</script>
 							</div>
-						<% else %>
-							<p>no user data found</p>
-						<% end %>
-					</div>
-					<div class='span3'>
-						<h4>Recent Deployments</h4>
-						<div>
-							<ol>
-								<% if website.git_path %>
-									<% deployments = list_deployments(website) %>
+						</div>
+					<% end %>
+					<% deployments = list_deployments(website) %>
+					<% if deployments.any? %>
+						<div class='span3'>
+							<h4>Recent Deployments</h4>
+							<div>
+								<ol>
 									<% (0..4).each do |i| %>
 										<% if deployments[i] %>
 											<% if deployments[i+1] %>
@@ -88,12 +90,10 @@
 											<%= Time.parse(deployments[i]).to_date %></a></li>
 										<% end %>
 									<% end %>
-								<% else %>
-									<p>no Github path found</p>
-								<% end %>
-							</ol>
+								</ol>
+							</div>
 						</div>
-					</div>
+					<% end %>
 				</div>
 				<hr>
 			</div>

@@ -92,7 +92,7 @@ new Highcharts.Chart({
         });
 }
 
-function bigchart (renderto, series_data, series_name){
+function bigchart (renderto, series_data, series_name, line_color){
 // This function makes the larger charts on the individual client pages.
 // I might need to make these different functions for different charts
 // depending on what kinds of charts they are and whether or not they
@@ -141,6 +141,7 @@ new Highcharts.Chart({
             },
             plotOptions: {
                 line: {
+                    color: line_color,
                     animation: false,
                     marker: {
                         enabled: false,
