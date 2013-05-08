@@ -2,7 +2,7 @@
 	<img src="icons/gr_logo.png">
 </div>
 <div class="container-fluid">		
-<% Client.includes(:web_sites).all.each_slice(2) do |clients| %>
+<% Client.includes(:web_sites).order("sort_order").all.each_slice(2) do |clients| %>
 	<div class="row-fluid">
 		<% clients.each do |client| %>
 			<div class="span6">

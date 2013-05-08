@@ -1,5 +1,5 @@
 class Client < ActiveRecord::Base
-  attr_accessible :logo_url, :name, :web_sites_attributes, :description, :harvest_client_id
+  attr_accessible :logo_url, :name, :web_sites_attributes, :description, :harvest_client_id, :sort_order
 
   validates :name, :presence => true, :uniqueness=>true
 
