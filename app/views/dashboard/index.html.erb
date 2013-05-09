@@ -2,7 +2,7 @@
 	<img src="icons/gr_logo.png">
 </div>
 <div class="container-fluid">		
-<% Client.includes(:web_sites).order("sort_order").all.each_slice(2) do |clients| %>
+<% @clients.each_slice(2) do |clients| %>
 	<div class="row-fluid">
 		<% clients.each do |client| %>
 			<div class="span6">
@@ -10,7 +10,7 @@
 					<b><a class="client_title" href='<%= client_path(client) %>'><%= client.name %></a></b>
 					<div class="client_logo"><img width='80' src="<%= client.logo_url %>"></div>
 					<div class="media-body scrollable">
-						<% client.web_sites.each do |website| %>
+						<% client.web_sites.order("sort_order").each do |website| %>
 							<% status = find_status(website) %>
 							<% up = status && /OK/.match(status['service_status']) %>
 							<!-- These are the websites and their labels -->

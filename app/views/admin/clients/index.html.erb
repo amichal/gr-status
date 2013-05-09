@@ -1,5 +1,7 @@
-<ol>
-<% Client.order("sort_order").all.each do |client| %>
-  <li><%= client.name %></li>
+<ol id='client_list' data-update-url="<%= sort_admin_clients_path %>">
+<% @clients.all.each do |client| %>
+  <%= content_tag_for :li, client do %>
+    <%= client.name %>
+  <% end %>
 <% end %>
-</0l>
+</ol>

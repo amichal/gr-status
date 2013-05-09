@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130508164437) do
+ActiveRecord::Schema.define(:version => 20130509185651) do
 
   create_table "clients", :force => true do |t|
     t.string   "name",              :null => false
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(:version => 20130508164437) do
     t.string   "ga_profile_id"
     t.string   "ga_metrics"
     t.string   "git_path"
+    t.integer  "sort_order"
   end
 
   add_index "web_sites", ["url"], :name => "index_web_sites_on_url", :unique => true

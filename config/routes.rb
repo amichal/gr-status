@@ -4,10 +4,15 @@ GrStatus::Application.routes.draw do
   match 'auth/:provider/callback', to: 'sessions#create', :as => :login
   match 'auth/failure', to: redirect('/')
   match 'signout', to: 'sessions#destroy', as: 'signout'
-  resources :clients, :web_sites
+  resources :web_sites, :clients
 
   namespace :admin do
-    resources :clients
+    resources :clients do
+      collection { post :sort }
+    end
+    resources :web_sites, :only => [] do
+      collection { post :sort }
+    end
     resources :google_analytics, :only => [:index, :show], :defaults => {:format => 'json'}, :constraints => {:format => 'json'}
     resources :github, :only => [:index], :defaults => {:format => 'json'}, :constraints => {:format => 'json'}
   end

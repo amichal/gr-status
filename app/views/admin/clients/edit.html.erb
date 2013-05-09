@@ -5,37 +5,48 @@
       <%= f.input :name %>
       <br>
       <%= f.input :logo_url %>
-      <br>
-      <%= f.input :sort_order, collection: 1..50 %>
     </div>
     <div class='span8'>
       <%= f.input :description, as: :text, :input_html => { :rows => 6 } %>
     </div>
   </div>
   <h3>Websites listed for this client</h3>
-  <%= f.simple_fields_for :web_sites do |sf| %>
-    <div class='row website_edit'>
-      <div class='span3'>
-        <%= sf.input :url, :class => "form_field" %>
-      </div>
-      <div class='span3'>
-        <%= sf.input :ga_profile_id, :as => :select2, :input_html => {:id => "ga_#{sf.object.id}", :class => "form_field"}, :select2 => {:ajax=>{:url=>admin_google_analytics_path(:format=>'json'), :init_url => "/admin/google_analytics/"}} %>
-      </div>
-      <div class='span3'>
-        <%= sf.input :git_path, :as => :select2, :input_html => {:id => "git_#{sf.object.id}", :class => "form_field"}, :select2 => {:ajax=>{:url=>admin_github_index_path(:format=>'json'), :init_url => "/admin/github/"}} %>
-      </div>
-      <% if !sf.object.new_record? %>
+  <div id="web_site_list" data-update-url="<%= sort_admin_web_sites_path %>">
+
+    <%= f.simple_fields_for :web_sites, f.object.web_sites.order("sort_order") do |sf| %>
+      <div class='row website_edit' id="website_<%= sf.object.id %>">
+        <div class='span3'>
+          <%= sf.input :url, :class => "form_field" %>
+        </div>
+        <div class='span3'>
+          <%= sf.input :ga_profile_id, :as => :select2, :input_html => {:id => "ga_#{sf.object.id}", :class => "form_field"}, :select2 => {:ajax=>{:url=>admin_google_analytics_path(:format=>'json'), :init_url => "/admin/google_analytics/"}} %>
+        </div>
+        <div class='span3'>
+          <%= sf.input :git_path, :as => :select2, :input_html => {:id => "git_#{sf.object.id}", :class => "form_field"}, :select2 => {:ajax=>{:url=>admin_github_index_path(:format=>'json'), :init_url => "/admin/github/"}} %>
+        </div>
         <div>
           <%= sf.check_box :_destroy %>
           <%= sf.label :_destroy, "Remove Website" %>
         </div> 
-      <% else %>
+      </div>
+    <% end %>
+    <%= f.simple_fields_for :web_sites, f.object.web_sites.build do |sf| %>
+      <div class='row'>
+        <div class='span3'>
+          <%= sf.input :url, :class => "form_field" %>
+        </div>
+        <div class='span3'>
+          <%= sf.input :ga_profile_id, :as => :select2, :input_html => {:id => "ga_#{sf.object.id}", :class => "form_field"}, :select2 => {:ajax=>{:url=>admin_google_analytics_path(:format=>'json'), :init_url => "/admin/google_analytics/"}} %>
+        </div>
+        <div class='span3'>
+          <%= sf.input :git_path, :as => :select2, :input_html => {:id => "git_#{sf.object.id}", :class => "form_field"}, :select2 => {:ajax=>{:url=>admin_github_index_path(:format=>'json'), :init_url => "/admin/github/"}} %>
+        </div>
         <div>
           <p>Fill this in to add a new website to this client</p>
         </div>
-      <% end %>
-    </div>
-  <% end %>
+      </div>
+    <% end %>
+  </div>
   <div class='row'>
     <div class='span12'>
       <%= f.button :submit %>

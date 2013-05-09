@@ -1,5 +1,5 @@
 class WebSite < ActiveRecord::Base
-  attr_accessible :monitored, :url, :client_id, :ga_profile_id, :git_path
+  attr_accessible :monitored, :url, :client_id, :ga_profile_id, :git_path, :sort_order
 
   validates :url, :presence => true, :uniqueness=>true
   belongs_to :client, :inverse_of=>:web_sites

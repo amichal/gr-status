@@ -11,7 +11,7 @@
 <h1><%= @client.name %></h1>
 <p><%= @client.description %></p>
 <div class='container-fluid'>
-	<% @client.web_sites.all.each_slice(1) do |websites|%>
+	<% @client.web_sites.order("sort_order").each_slice(1) do |websites|%>
 		<% websites.each do |website| %>
 			<div class='website_detail showoff'>
 				<h3><a href='<%= website.url %>'><%= website.url %></a></h3>
