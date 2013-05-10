@@ -1,7 +1,8 @@
+<p>Click a client to edit that client.  Drag a client to reorder the clients.</p>
 <ol id='client_list' data-update-url="<%= sort_admin_clients_path %>">
 <% @clients.all.each do |client| %>
   <%= content_tag_for :li, client do %>
-    <%= client.name %>
+    <a href='<%= client_path(client) %>'><%= client.name %></a>
   <% end %>
 <% end %>
 </ol>

@@ -12,9 +12,9 @@
   </div>
   <h3>Websites listed for this client</h3>
   <div id="web_site_list" data-update-url="<%= sort_admin_web_sites_path %>">
-
     <%= f.simple_fields_for :web_sites, f.object.web_sites.order("sort_order") do |sf| %>
       <div class='row website_edit' id="website_<%= sf.object.id %>">
+        <span class="handle">[drag this to change order]</span>
         <div class='span3'>
           <%= sf.input :url, :class => "form_field" %>
         </div>

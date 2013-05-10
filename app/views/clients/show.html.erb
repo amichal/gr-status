@@ -3,7 +3,7 @@
 <li class='active'><%= @client.name %></li>
 </ul>
 <%if current_user%>
-	<div style=float:right>
+	<div class='edit_button'>
 		<a class='btn btn-primary' href ="../admin/<%= client_path(@client) %>/edit">Edit</a>
 	</div>
 <% end %>
